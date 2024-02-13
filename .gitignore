@@ -11,7 +11,8 @@ __pycache__/
 *.pt
 
 # Ignore saved model directories
-/models/
+/ECE_7870/models/
+/ECE_8770/project_1/models/
 
 # Ignore data files
 *.csv
