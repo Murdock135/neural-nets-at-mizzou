@@ -9,10 +9,12 @@ __pycache__/
 # Ignore model files
 *.pth
 *.pt
+checkpoints/
 
 # Ignore saved model directories
 /ECE_7870/models/
 /ECE_8770/project_1/models/
+
 
 # Ignore data files
 *.csv
@@ -23,3 +25,14 @@ __pycache__/
 
 # Ignore virtual environment
 venv/
+.venv/
+env/
+ENV/
+
+# tensorboard log directories
+runs/
+
+# IDE editor config
+.vscode/
+.idea/
+
