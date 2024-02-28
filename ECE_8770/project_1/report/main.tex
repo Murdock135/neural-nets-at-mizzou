@@ -1,0 +1,32 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{biblatex}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{setspace}
+\addbibresource{sources.bib}
+
+
+%rules
+\setlength{\parskip}{1em}
+\setlength{\parindent}{0em}
+\onehalfspacing
+
+\graphicspath{figs/}
+
+\begin{document}
+
+\input{title}
+
+\include{sections/Project Description}
+
+\include{sections/Experiments and Results}
+
+\include{sections/conclusion and future work}
+
+\printbibliography
+\end{document}
