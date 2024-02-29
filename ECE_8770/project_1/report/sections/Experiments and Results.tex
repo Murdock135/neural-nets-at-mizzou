@@ -32,13 +32,13 @@ analysis of the activation functions' performance within the framework of
 Multi-Layer Perceptron (MLP) models. 
 
 \subsubsection{Model Architectures}
-The `base model' was a 1 layered model that used the sigmoid activation function
-across its hidden layers, shown in figure \ref{fig: NN 1l}. This architecture was 
+The `base model' was a 1 layered model shown in figure \ref{fig: NN 1l} that 
+used the sigmoid activation function across its hidden layers, . This architecture was 
 designed with the minimum number of neurons required to create 3 functions in the
 hidden layer which were supposed to have separated the 3 classes.
 
 3 more `2 (hidden) layered models' (figure \ref{fig: NN 2l}) were created to compare firstly, the activation
-functions and secondly, to the `base model'.
+functions and secondly, to compare 2 layered models to the base 1 layered model.
 
 
 \begin{figure}
@@ -60,12 +60,31 @@ functions and secondly, to the `base model'.
 
 \subsubsection{Results}
 
-The accuracy-plot for all the architectures when using the Adam optimization algorithm is shown 
-in figure \ref{fig: Adam results Part 1}
+The epoch-accuracy (validation set) plots for all the architectures are shown in figure 
+\ref{fig: Accuracy}. The epoch-loss plots for the training and validation sets are shown in figure \ref*{fig: loss curves-Adam}
+and figure \ref{fig: loss curves-SGD}. The adam optimizer was able to optimize
+all models such that they achieved near 100\% accuracy whereas SGD was only able
+to optimize the models with 2 layers using the Hyperbolic Tangent and the 
+
 
 \begin{figure}
     \centering
-    \includegraphics[width=1.0\textwidth]{./results/part_1_adam.png}
-    \caption{Accuracy for Adam optimization}
-    \label{fig: Adam results Part 1}
+    \includegraphics[width=1.0\textwidth]{./results/part_1/accuracy.png}
+    \caption{Accuracy on validation set}
+    \label{fig: Accuracy}
 \end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1.0\textwidth]{./results/part_1/loss_adam.png}
+    \caption{loss Adam}
+    \label{fig: loss curves-Adam}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1.0\textwidth]{./results/part_1/loss_sgd.png}
+    \caption{loss SGD}
+    \label{fig: loss curves-SGD}
+\end{figure}
+

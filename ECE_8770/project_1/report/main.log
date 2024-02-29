@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.2.3)  28 FEB 2024 23:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.2.3)  29 FEB 2024 11:19
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -488,15 +488,26 @@ File: ./figs/architectures/sigmoid_2_layers.jpg Graphic file (type jpg)
 <use ./figs/architectures/sigmoid_2_layers.jpg>
 Package pdftex.def Info: ./figs/architectures/sigmoid_2_layers.jpg  used on input line 53.
 (pdftex.def)             Requested size: 375.80544pt x 234.88574pt.
-<./figs/./results/part_1_adam.png, id=24, 963.6pt x 244.185pt>
-File: ./figs/./results/part_1_adam.png Graphic file (type png)
-<use ./figs/./results/part_1_adam.png>
-Package pdftex.def Info: ./figs/./results/part_1_adam.png  used on input line 68.
-(pdftex.def)             Requested size: 469.75502pt x 119.04062pt.
- [4 <./figs/architectures/sigmoid_1_layer.jpg> <./figs/architectures/sigmoid_2_layers.jpg>]) [5 <./figs/./results/part_1_adam.png>]
+ [4 <./figs/architectures/sigmoid_1_layer.jpg> <./figs/architectures/sigmoid_2_layers.jpg>]
+<./figs/./results/part_1/accuracy.png, id=27, 536.112pt x 188.121pt>
+File: ./figs/./results/part_1/accuracy.png Graphic file (type png)
+<use ./figs/./results/part_1/accuracy.png>
+Package pdftex.def Info: ./figs/./results/part_1/accuracy.png  used on input line 72.
+(pdftex.def)             Requested size: 469.75502pt x 164.84084pt.
+<./figs/./results/part_1/loss_adam.png, id=28, 824.973pt x 264.552pt>
+File: ./figs/./results/part_1/loss_adam.png Graphic file (type png)
+<use ./figs/./results/part_1/loss_adam.png>
+Package pdftex.def Info: ./figs/./results/part_1/loss_adam.png  used on input line 79.
+(pdftex.def)             Requested size: 469.75502pt x 150.63876pt.
+<./figs/./results/part_1/loss_sgd.png, id=29, 578.16pt x 195.567pt>
+File: ./figs/./results/part_1/loss_sgd.png Graphic file (type png)
+<use ./figs/./results/part_1/loss_sgd.png>
+Package pdftex.def Info: ./figs/./results/part_1/loss_sgd.png  used on input line 86.
+(pdftex.def)             Requested size: 469.75502pt x 158.89778pt.
+) [5 <./figs/./results/part_1/accuracy.png> <./figs/./results/part_1/loss_adam.png>] [6 <./figs/./results/part_1/loss_sgd.png>]
 \openout2 = `"sections/conclusion and future work.aux"'.
 
- (sections/conclusion and future work.tex) [6
+ (sections/conclusion and future work.tex) [7
 
 
 
@@ -514,17 +525,17 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 11857 strings out of 474486
- 229069 string characters out of 5743756
+ 11877 strings out of 474486
+ 229888 string characters out of 5743756
  1930542 words of memory out of 5000000
- 34038 multiletter control sequences out of 15000+600000
+ 34058 multiletter control sequences out of 15000+600000
  559885 words of font info for 42 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  66i,6n,81p,760b,803s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Zayan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Zayan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Zayan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on main.pdf (7 pages, 816776 bytes).
+Output written on main.pdf (8 pages, 1013918 bytes).
 PDF statistics:
- 50 PDF objects out of 1000 (max. 8388607)
+ 57 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 36 words of extra memory for PDF output out of 10000 (max. 10000000)
 
