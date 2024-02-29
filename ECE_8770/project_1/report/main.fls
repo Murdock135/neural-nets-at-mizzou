@@ -1,4 +1,4 @@
-PWD c:\Users\Zayan\Documents\code\personal_repos\neural_nets\ECE_8770\project_1\report
+PWD C:\Users\Zayan\Documents\code\personal_repos\neural_nets\ECE_8770\project_1\report
 INPUT C:\Users\Zayan\AppData\Local\MiKTeX\miktex\data\le\pdftex\pdflatex.fmt
 INPUT c:\Users\Zayan\Documents\code\personal_repos\neural_nets\ECE_8770\project_1\report\main.tex
 OUTPUT main.log
@@ -164,6 +164,12 @@ OUTPUT sections\Experiments and Results.aux
 INPUT .\sections\Experiments and Results.tex
 INPUT .\sections\Experiments and Results.tex
 INPUT sections\Experiments and Results.tex
+INPUT .\figs\part_1_data.png
+INPUT .\figs\part_1_data.png
+INPUT .\figs\part_1_data.png
+INPUT .\figs\part_1_data.png
+INPUT .\figs\part_1_data.png
+INPUT .\figs\part_1_data.png
 INPUT .\sections\conclusion and future work.tex
 INPUT .\sections\conclusion and future work.tex
 OUTPUT sections\conclusion and future work.aux
