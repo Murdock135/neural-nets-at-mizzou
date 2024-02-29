@@ -170,6 +170,24 @@ INPUT .\figs\part_1_data.png
 INPUT .\figs\part_1_data.png
 INPUT .\figs\part_1_data.png
 INPUT .\figs\part_1_data.png
+INPUT .\figs\architectures\sigmoid_1_layer.jpg
+INPUT .\figs\architectures\sigmoid_1_layer.jpg
+INPUT .\figs\architectures\sigmoid_1_layer.jpg
+INPUT .\figs\architectures\sigmoid_1_layer.jpg
+INPUT .\figs\architectures\sigmoid_1_layer.jpg
+INPUT .\figs\architectures\sigmoid_1_layer.jpg
+INPUT .\figs\architectures\sigmoid_2_layers.jpg
+INPUT .\figs\architectures\sigmoid_2_layers.jpg
+INPUT .\figs\architectures\sigmoid_2_layers.jpg
+INPUT .\figs\architectures\sigmoid_2_layers.jpg
+INPUT .\figs\architectures\sigmoid_2_layers.jpg
+INPUT .\figs\architectures\sigmoid_2_layers.jpg
+INPUT .\figs\.\results\part_1_adam.png
+INPUT .\figs\.\results\part_1_adam.png
+INPUT .\figs\.\results\part_1_adam.png
+INPUT .\figs\.\results\part_1_adam.png
+INPUT .\figs\.\results\part_1_adam.png
+INPUT .\figs\.\results\part_1_adam.png
 INPUT .\sections\conclusion and future work.tex
 INPUT .\sections\conclusion and future work.tex
 OUTPUT sections\conclusion and future work.aux

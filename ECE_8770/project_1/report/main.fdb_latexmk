@@ -1,13 +1,12 @@
 # Fdb version 4
-["biber main"] 0 "main.bcf" "main.bbl" "main" 1709173510.92863 -1
-  "main.bcf" 1709173510.62464 107698 6d653fd7bdf978c2b2b3057a114505bb "pdflatex"
-  "sources.bib" 1709153965.22544 1597 b7109b578891fb5d59606f29020515cc ""
+["biber main"] 1709180062.33331 "main.bcf" "main.bbl" "main" 1709185439.67137 0
+  "main.bcf" 1709185439.48952 107698 6d653fd7bdf978c2b2b3057a114505bb "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1709173508.71864 "c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_1/report/main.tex" "main.pdf" "main" 1709173510.93048 0
-  "C:/Users/Zayan/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1708365579.46873 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
+["pdflatex"] 1709185437.84717 "c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_1/report/main.tex" "main.pdf" "main" 1709185439.67231 0
+  "C:/Users/Zayan/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1709178880.31758 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
   "C:/Users/Zayan/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1706998271.69914 24225045 b7478f8a43d06ed8a652492414aa3cb3 ""
   "C:/Users/Zayan/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmbx12.tfm" 1136765053 1324 c910af8c371558dc20f2d7822f66fe64 ""
   "C:/Users/Zayan/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmr12.tfm" 1136765053 1288 655e228510b4c2a1abe905c368440826 ""
@@ -62,17 +61,20 @@
   "C:/Users/Zayan/AppData/Local/Programs/MiKTeX/tex/latex/tools/array.sty" 1700599895 12667 e4b5eb11e4b7239e6c8a52bbe074a6c6 ""
   "C:/Users/Zayan/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "C:/Users/Zayan/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1700127522 55487 80a65caedd3722f4c20a14a69e785d8f ""
-  "c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_1/report/main.tex" 1709163765.38699 620 015918816f7ac210ea4d8c0c72e8aca9 ""
+  "c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_1/report/main.tex" 1709180453.0676 663 bcf2714d8184f94f8298c576fc1b7f52 ""
+  "figs/./results/part_1_adam.png" 1709184340.00209 155543 d0c8ac1cd5aa974a4603d99f33e6d6fc ""
   "figs/Screenshot 2023-09-28 011032.png" 1709153965.21104 33033 0d03d61926b8a4c2c06bab24f84fab73 ""
+  "figs/architectures/sigmoid_1_layer.jpg" 1709179264.82607 115393 e47c0e5bfbe1138af2cf0af0393bbe4f ""
+  "figs/architectures/sigmoid_2_layers.jpg" 1709179282.87124 429575 6735d5a54840f213f2899279f8604442 ""
   "figs/part_1_data.png" 1709162478.79481 52574 853b364280eb65f1ecc935edf9a64c97 ""
-  "main.aux" 1709173510.60217 278 8a2fc5793c26c45cbf15062b2a70f92e "pdflatex"
-  "main.bbl" 1709153976.49622 486 5d0d039bf84e4f45a7144d280f172f5d "biber main"
-  "main.run.xml" 1709173510.62812 2302 6afcbad28ff1017e083805aa0b6cae48 "pdflatex"
-  "sections/Experiments and Results.aux" 1709173510.58554 4214 d889b083b0f9dcf073f214ecefd4b6dd "pdflatex"
-  "sections/Experiments and Results.tex" 1709173507.52892 1138 1d6348a1c9326b04ada6707fc92dc989 ""
-  "sections/Project Description.aux" 1709173510.47773 4014 ab21fb2a069a73561583daa3648f1d82 "pdflatex"
-  "sections/Project Description.tex" 1709153965.22444 1557 66059f5a8a3961661e89cd6347f9a0e5 ""
-  "sections/conclusion and future work.aux" 1709173510.60217 3906 3cb931a4068ebf2dd07a7f3cc3999ae7 "pdflatex"
+  "main.aux" 1709185439.48073 278 d1b7936877b644f5ff02d4be0c9c95b1 "pdflatex"
+  "main.bbl" 1709180068.53065 486 5d0d039bf84e4f45a7144d280f172f5d "biber main"
+  "main.run.xml" 1709185439.49153 2302 6afcbad28ff1017e083805aa0b6cae48 "pdflatex"
+  "sections/Experiments and Results.aux" 1709185439.47121 5160 e84da746665ff50e915b1e5090b410a5 "pdflatex"
+  "sections/Experiments and Results.tex" 1709185437.06665 2889 c227b701b8a628bd831b4696dc670262 ""
+  "sections/Project Description.aux" 1709185438.88184 4615 c9dcab6a67a8a68de5f4facbb9d1eaff "pdflatex"
+  "sections/Project Description.tex" 1709182354.14514 1979 55dc738b9257cb71bbbc9dabadbff310 ""
+  "sections/conclusion and future work.aux" 1709185439.47972 3906 d196d7446664416dcc03562ed7f9f827 "pdflatex"
   "sections/conclusion and future work.tex" 1709153965.22544 647 7e7b069fd2643921bb0f6b6fa4d761f8 ""
   "title.tex" 1709153965.22694 475 b9236a732a31abcb0debb94ca7447b13 ""
   (generated)

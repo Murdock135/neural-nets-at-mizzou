@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.2.3)  28 FEB 2024 20:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.2.3)  28 FEB 2024 23:43
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -367,20 +367,20 @@ Package: setspace 2022/12/04 v6.7b set line spacing
  (main.aux (sections/Project Description.aux) (sections/Experiments and Results.aux) (sections/conclusion and future work.aux))
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
  (C:\Users\Zayan\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count398
@@ -447,8 +447,8 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'main.bbl' found.
  (main.bbl)
-Package biblatex Info: Reference section=0 on input line 21.
-Package biblatex Info: Reference segment=0 on input line 21.
+Package biblatex Info: Reference section=0 on input line 22.
+Package biblatex Info: Reference segment=0 on input line 22.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
  (title.tex
@@ -464,29 +464,45 @@ Package pdftex.def Info: figs/Screenshot 2023-09-28 011032.png  used on input li
 
  (sections/Project Description.tex) [1
 
-]
+] [2]
 \openout2 = `"sections/Experiments and Results.aux"'.
 
  (sections/Experiments and Results.tex
-<./figs/part_1_data.png, id=14, 408.3255pt x 298.4751pt>
+<./figs/part_1_data.png, id=17, 408.3255pt x 298.4751pt>
 File: ./figs/part_1_data.png Graphic file (type png)
 <use ./figs/part_1_data.png>
-Package pdftex.def Info: ./figs/part_1_data.png  used on input line 25.
+Package pdftex.def Info: ./figs/part_1_data.png  used on input line 8.
 (pdftex.def)             Requested size: 234.8775pt x 171.69016pt.
-) [2
+ [3
 
 
 
  <./figs/part_1_data.png>]
+<./figs/architectures/sigmoid_1_layer.jpg, id=22, 604.8999pt x 194.1654pt>
+File: ./figs/architectures/sigmoid_1_layer.jpg Graphic file (type jpg)
+<use ./figs/architectures/sigmoid_1_layer.jpg>
+Package pdftex.def Info: ./figs/architectures/sigmoid_1_layer.jpg  used on input line 46.
+(pdftex.def)             Requested size: 375.80544pt x 120.63312pt.
+<./figs/architectures/sigmoid_2_layers.jpg, id=23, 684.156pt x 427.5975pt>
+File: ./figs/architectures/sigmoid_2_layers.jpg Graphic file (type jpg)
+<use ./figs/architectures/sigmoid_2_layers.jpg>
+Package pdftex.def Info: ./figs/architectures/sigmoid_2_layers.jpg  used on input line 53.
+(pdftex.def)             Requested size: 375.80544pt x 234.88574pt.
+<./figs/./results/part_1_adam.png, id=24, 963.6pt x 244.185pt>
+File: ./figs/./results/part_1_adam.png Graphic file (type png)
+<use ./figs/./results/part_1_adam.png>
+Package pdftex.def Info: ./figs/./results/part_1_adam.png  used on input line 68.
+(pdftex.def)             Requested size: 469.75502pt x 119.04062pt.
+ [4 <./figs/architectures/sigmoid_1_layer.jpg> <./figs/architectures/sigmoid_2_layers.jpg>]) [5 <./figs/./results/part_1_adam.png>]
 \openout2 = `"sections/conclusion and future work.aux"'.
 
- (sections/conclusion and future work.tex) [3
+ (sections/conclusion and future work.tex) [6
 
 
 
 ]
 
-LaTeX Warning: Empty bibliography on input line 31.
+LaTeX Warning: Empty bibliography on input line 32.
 
 (main.aux (sections/Project Description.aux) (sections/Experiments and Results.aux) (sections/conclusion and future work.aux))
  ***********
@@ -498,17 +514,17 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 11827 strings out of 474486
- 227920 string characters out of 5743756
- 1929542 words of memory out of 5000000
- 34008 multiletter control sequences out of 15000+600000
+ 11857 strings out of 474486
+ 229069 string characters out of 5743756
+ 1930542 words of memory out of 5000000
+ 34038 multiletter control sequences out of 15000+600000
  559885 words of font info for 42 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  66i,6n,81p,760b,803s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Zayan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Zayan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Zayan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on main.pdf (4 pages, 118796 bytes).
+Output written on main.pdf (7 pages, 816776 bytes).
 PDF statistics:
- 35 PDF objects out of 1000 (max. 8388607)
+ 50 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
