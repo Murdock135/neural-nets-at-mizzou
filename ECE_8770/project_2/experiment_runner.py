@@ -1,12 +1,13 @@
 import torch
 import os
 from src.utils import load_config, ResultsPlotter
-from src.dataset_utils import CustomDataset, create_sequences, separate_features_and_target
-from src.model_trainer import ClassifierTrainer, RegressorTrainer, reset_model_weights
+from src.dataset_utils import CustomDataset, create_sequences
+from src.model_trainer import ClassifierTrainer, RegressorTrainer
 from src.models import myRNN
 import torch.optim as optim
 import torch.nn as nn
 import pandas as pd
+
 
 def get_optimizer(model, config):
     optimizer_config = config['training']['optimizer']
@@ -40,7 +41,7 @@ if __name__ == "__main__":
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     # load data
-    data_path = config['data path']
+    data_path = config['data_path']
     data = pd.read_csv(data_path)
 
     # create sequences

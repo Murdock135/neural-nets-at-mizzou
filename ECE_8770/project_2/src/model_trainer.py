@@ -16,7 +16,7 @@ def reset_model_weights(model):
         if hasattr(layer, 'reset_parameters'):
             layer.reset_parameters()
 
-class Trainer(ABC):
+class BaseTrainer(ABC):
     def __init__(self, model, device, dataset, criterion, optimizer, epochs, training_portion, batch_size, kfold=False, folds=None):
         self.model = model
         self.device = device
@@ -150,7 +150,7 @@ class Trainer(ABC):
             results_df = pd.DataFrame(self.results)
             results_df.to_csv(filename, index=False)
 
-class ClassifierTrainer(Trainer):
+class ClassifierBaseTrainer(BaseTrainer):
     
     def validate(self, val_loader):
         self.model.eval()
@@ -227,7 +227,7 @@ class ClassifierTrainer(Trainer):
         f"recall = {recall}\n")
 
 
-class RegressorTrainer(Trainer):
+class RegressorBaseTrainer(BaseTrainer):
     def validate(self, val_loader):
         self.model.eval()
         total_loss = 0.0
@@ -345,6 +345,6 @@ class RegressorTrainer(Trainer):
 #             results_df.to_csv(filename, index=False)
 
 
-# class RegressorTrainer:
+# class RegressorBaseTrainer:
 #     pass
                 

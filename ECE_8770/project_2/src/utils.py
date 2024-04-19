@@ -32,7 +32,7 @@ class ResultsPlotter:
         plt.ylabel('Loss')
         plt.legend()
         plt.grid(True)
-        plt.savefig(os.path.join(self.exp_dir, f"{self.fold_idx+1 if self.fold_idx is not None else ""}_loss.png"))
+        plt.savefig(os.path.join(self.exp_dir, f"{self.fold_idx+1 if self.fold_idx is not None else ''}_loss.png"))
 
         # Plot accuracy and F1 score on the same graph
         plt.figure(figsize=(10, 6))
@@ -65,7 +65,7 @@ class ResultsPlotter:
             plt.ylabel('Loss')
             plt.legend()
             plt.grid(True)
-            plt.savefig(os.path.join(self.exp_dir, f"{self.fold_idx if self.fold_idx is not None else ""}_regression_loss.png"))
+            plt.savefig(os.path.join(self.exp_dir, f"{self.fold_idx if self.fold_idx is not None else ''}_regression_loss.png"))
 
     def plot_from_csv(self):
          pass
