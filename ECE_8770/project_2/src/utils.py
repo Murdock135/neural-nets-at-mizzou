@@ -11,8 +11,6 @@ def load_config(path_to_config) -> dict:
         config: dict = tomllib.load(f)
         return config
 
-
-
 class ResultsPlotter:
     def __init__(self, exp_dir, results):
         '''Args:
@@ -20,15 +18,15 @@ class ResultsPlotter:
             results(dictionary)- a dict of results where keys are metrics and values are lists
             '''
         self.exp_dir = exp_dir
-        self.results = results
+        self.results: dict = results
 
-    def plot_results(self):
+    def plot_classification_results(self):
 
-        # plot Training Loss + Validation Loss on same graph
+        # plot training loss + validation loss on same graph
         plt.figure()
-        plt.plot(self.results['Training Loss'], label='Training Loss')
-        plt.plot(self.results['Validation Loss'], label='Validation Loss')
-        plt.title('Training and Validation Loss')
+        plt.plot(self.results['training loss'], label='training loss')
+        plt.plot(self.results['validation loss'], label='validation loss')
+        plt.title('Training and validation loss')
         plt.xlabel('Epoch')
         plt.ylabel('Loss')
         plt.legend()
@@ -37,9 +35,12 @@ class ResultsPlotter:
 
         # Plot accuracy and F1 score on the same graph
         plt.figure(figsize=(10, 6))
-        plt.plot(self.results['Validation Accuracy'], label='Accuracy', color='blue')
+        plt.plot(self.results['accuracy'], label='Accuracy', color='blue')
         plt.plot(self.results['f1 score'], label='F1 Score', color='green')
-        plt.title('Accuracy and F1 Score')
+        plt.plot(self.results['precision'], label='precision', color='purple')
+        plt.plot(self.results['recall'], label='recall', color='cyan')
+
+        plt.title('Performance Metrics: Accuracy, F1, Precision, and Recall')
         plt.xlabel('Epoch')
         plt.ylabel('Score')
         plt.ylim(0, 1)  # Set y-axis limits for F1 score
@@ -53,4 +54,14 @@ class ResultsPlotter:
 
         plt.savefig(os.path.join(self.exp_dir,'accuracy_and_f1.png'))
 
-
+def plot_regression_results(self):
+        # Plot Training Loss + Validation Loss on the same graph specifically for regression tasks
+        plt.figure()
+        plt.plot(self.results['training loss'], label='training loss')
+        plt.plot(self.results['validation loss'], label='validation Loss')
+        plt.title('Training and Validation Loss')
+        plt.xlabel('Epoch')
+        plt.ylabel('Loss')
+        plt.legend()
+        plt.grid(True)
+        plt.savefig(os.path.join(self.exp_dir, "regression_loss.png"))

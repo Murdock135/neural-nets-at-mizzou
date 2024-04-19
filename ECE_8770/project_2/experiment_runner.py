@@ -8,23 +8,26 @@ import torch.optim as optim
 import torch.nn as nn
 import pandas as pd
 
-def get_optimizer(model, optimizer_config: str):
+def get_optimizer(model, config):
+    optimizer_config = config['training']['optimizer']
+    
     optimizer_type = optimizer_config['type']
     learning_rate = optimizer_config['learning_rate']
 
-    if optimizer_config == "Adam":
+    if optimizer_type.lower() == "adam":
         return optim.Adam(model.parameters(), lr=learning_rate)
-    elif optimizer_config == "SGD":
+    elif optimizer_type.lower() == "sgd":
         return optim.SGD(model.parameters(), lr=learning_rate)
     
-def get_criterion(criterion_config: str):
-    criterion = criterion_config
+def get_criterion(config: str):
+    criterion = config['training']['criterion']
 
-    if criterion == "Cross Entropy":
+    if criterion.lower() == "cross entropy":
         return nn.CrossEntropyLoss()
-    elif criterion == "MSE":
+    elif criterion.lower() == "mse":
         return nn.MSELoss()
 
+# run program
 if __name__ == "__main__":
     # load configuration
     config_path = os.path.join(os.path.dirname(__file__), "configs", "config.toml")
@@ -50,8 +53,8 @@ if __name__ == "__main__":
 
     # training parameters
     model = myRNN(input_dim=sequence_len, hidden_dim=config['model']['hidden_size'], layer_dim=config['model']['num_layers']).to(device)
-    optimizer = get_optimizer(model, config['training']['optimizer'])
-    criterion = get_criterion(config['training']['criterion'])
+    optimizer = get_optimizer(model, config)
+    criterion = get_criterion(config)
     epochs = config['training']['epochs']
     batch_size = config['training']['batch_size']
     is_kfold = config['training']['k_fold']['status']
@@ -61,7 +64,7 @@ if __name__ == "__main__":
     else:
         n_folds = 0
 
-    trainer = ClassifierTrainer(model=model, 
+    trainer = RegressorTrainer(model=model, 
                                 device=device, 
                                 dataset=dataset, 
                                 criterion=criterion, 
