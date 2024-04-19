@@ -16,6 +16,8 @@ def reset_model_weights(model):
         if hasattr(layer, 'reset_parameters'):
             layer.reset_parameters()
 
+# --------------------------------------------------------------------------------------------------------------------------------------
+# The base class for trainers
 class BaseTrainer(ABC):
     def __init__(self, model, device, dataset, criterion, optimizer, epochs, training_portion, batch_size, kfold=False, folds=None):
         self.model = model
@@ -150,6 +152,8 @@ class BaseTrainer(ABC):
             results_df = pd.DataFrame(self.results)
             results_df.to_csv(filename, index=False)
 
+# -------------------------------------------------------------------------------------------------------------------------------------
+# General purpose trainers
 class ClassifierTrainer(BaseTrainer):
     
     def validate(self, val_loader):
@@ -271,80 +275,81 @@ class RegressorTrainer(BaseTrainer):
         f"Training loss = {train_loss}\n"
         f"Validation loss = {val_loss}\n")
 
+# ---------------------------------------------------------------------------------------------------------------------------------------
+# Trainers for sequential data
+class SequentialClassifierTrainer(BaseTrainer):
+    def validate(self, val_loader):
+        self.model.eval()
+        total_loss = 0.0
+        correct = 0
+        total_labels = 0
 
-#     def train_and_validate(self):
-#         train_loader, val_loader = CustomDataLoader(self.dataset, self.training_portion, self.batch_size, shuffle=True)
+        with torch.no_grad():
+            for batch_idx, data in enumerate(val_loader):
+                inputs, labels = data
+                inputs = inputs.to(self.device)
+                labels = labels.to(self.device)
 
-#         for epoch in tqdm(range(self.epochs)):
-#             train_loss = self.train_one_epoch(train_loader=train_loader)
-#             val_loss, val_accuracy, f1 = self.validate(val_loader=val_loader)
+                outputs = self.model(inputs)
+                loss = self.criterion(outputs, labels)
+                total_loss += loss.item()
 
-#             self.results['training loss'].append(train_loss)
-#             self.results['validation loss'].append(val_loss)
-#             self.results['accuracy'].append(val_accuracy)
-#             self.results['f1 score'].append(f1)
+                # Depending on the output shape, adjust the accuracy calculation
+                if self.model.future_strategy in ['many_to_one', 'sequential']:
+                    _, predicted = torch.max(outputs, -1)
+                    correct += (predicted == labels).sum().item()
+                    total_labels += labels.numel()
 
-#             if (epoch+1) % 10 == 0:
-#                     print("-" * 10)
-#                     print(f"Epoch {epoch+1}:\n"
-#                         f"Training loss = {train_loss}\n"
-#                         f"Validation loss = {val_loss}\n"
-#                         f"Validation accuracy = {val_accuracy}\n"
-#                         f"f1 score = {f1}")
+        accuracy = 100 * correct / total_labels
+        return total_loss / len(val_loader), accuracy
 
-#     def train_and_validate_kfold(self):
-#         # Sample elements randomly from a given list of ids, no replacement.
-#         for fold, (train_idx, val_idx) in enumerate(self.kf.split(np.arange(len(self.dataset)))):
-#             train_subsampler = torch.utils.data.SubsetRandomSampler(train_idx)
-#             val_subsampler = torch.utils.data.SubsetRandomSampler(val_idx)
+    def define_metrics(self):
+        return ['training loss', 'validation loss', 'accuracy']
 
-#             train_loader = torch.utils.data.Dataloader(self.dataset, batch_size=self.batch_size, sampler=train_subsampler)
-#             val_loader = torch.utils.data.Dataloader(self.dataset, batch_size=self.batch_size, sampler=val_subsampler)
+    def log_epoch_results(self, train_loss, val_results):
+        val_loss, accuracy = val_results
+        self.results['training loss'].append(train_loss)
+        self.results['validation loss'].append(val_loss)
+        self.results['accuracy'].append(accuracy)
 
-#             fold_results = {'train_loss': [], 'val_loss': [], 'val_accuracy': [], 'f1': []}
-#             for epoch in tqdm(range(self.epochs), desc=f"Fold {fold+1} Training"):
-#                 train_loss = self.train_one_epoch(train_loader=train_loader)
-#                 val_loss, val_accuracy, f1 = self.validate(val_loader=val_loader)
-
+    def display_results(self, epoch, train_loss, val_results):
+        val_loss, accuracy = val_results
+        print(f"Epoch {epoch+1}: Training loss = {train_loss}, Validation loss = {val_loss}, Accuracy = {accuracy}%")
                 
-#                 fold_results['train_loss'].append(train_loss)
-#                 fold_results['val_loss'].append(val_loss)
-#                 fold_results['val_accuracy'].append(val_accuracy)
-#                 fold_results['f1'].append(f1)
+class SequentialRegressorTrainer(BaseTrainer):
+    def validate(self, val_loader):
+        self.model.eval()
+        total_loss = 0.0
 
-#                 if (epoch+1) % 10 == 0:
-#                      print("-" * 10)
-#                      print(f"Epoch {epoch+1}:\n"
-#                         f"Training loss = {train_loss}\n"
-#                         f"Validation loss = {val_loss}\n"
-#                         f"Validation accuracy = {val_accuracy}\n"
-#                         f"f1 score = {f1}")
-            
-#             self.kf_results.append(fold_results)
-                     
-#     def train(self):
-#         if self.kfold:
-#             self.train_and_validate_kfold()
-#         else:
-#             self.train_and_validate()
+        with torch.no_grad():
+            for batch_idx, data in enumerate(val_loader):
+                inputs, targets = data
+                inputs = inputs.to(self.device)
+                targets = targets.to(self.device)
 
-#     def save_model_results(self, exp_dir):
-#         # date and time
-#         now = datetime.now()
-#         date_time_str = now.strftime("%Y-%m-%d_%H-%M-%S")
+                outputs = self.model(inputs)
 
-#         if KFold:
-#             # iterate over results of each fold and log results to a csv
-#             for fold_idx, fold_results in enumerate(self.kf_results):
-#                 filename = os.path.join(exp_dir, f"fold_{fold_idx}_results_{date_time_str}.csv")
-#                 results_df = pd.DataFrame(fold_results)
-#                 results_df.to_csv(filename, index=False)
-#         else:
-#             filename = os.path.join(exp_dir, f"results_{date_time_str}.csv")
-#             results_df = pd.DataFrame(self.results)
-#             results_df.to_csv(filename, index=False)
-
-
-# class RegressorTrainer:
-#     pass
+                # Adjust the loss computation based on the output strategy
+                if self.model.future_strategy == 'many_to_one':
+                    # For many-to-one, targets are typically a single value per sequence
+                    loss = self.criterion(outputs, targets)
+                elif self.model.future_strategy in ['sequential', 'fixed_window']:
+                    # For sequential or fixed_window, reshape outputs to match targets if necessary
+                    # This assumes that targets are appropriately shaped for these strategies
+                    outputs = outputs.view(-1, outputs.shape[-1])  # Flatten output for batch processing
+                    targets = targets.view(-1, targets.shape[-1])  # Flatten targets to match output
+                    loss = self.criterion(outputs, targets)
                 
+                total_loss += loss.item()
+
+        return total_loss / len(val_loader)
+
+    def define_metrics(self):
+        return ['training loss', 'validation loss']
+
+    def log_epoch_results(self, train_loss, val_loss):
+        self.results['training loss'].append(train_loss)
+        self.results['validation loss'].append(val_loss)
+
+    def display_results(self, epoch, train_loss, val_loss):
+        print(f"Epoch {epoch+1}: Training loss = {train_loss}, Validation loss = {val_loss}")

@@ -17,7 +17,7 @@ type = 'lstm' # Type ('rnn', 'gru', 'lstm')
 num_layers = 1
 hidden_size = 512
 sequence_length = 7
-future_strategy = "sequential"
+future_strategy = "sequential" # options: ['many_to_one', 'sequential', 'fixed_window']
 prediction_window = 1 # Number of time steps to predict (only applied if future_strategy == 'fixed_window')
 
 [output]
