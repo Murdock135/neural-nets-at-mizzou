@@ -15,6 +15,7 @@ def reset_model_weights(model):
     for layer in model.children():
         if hasattr(layer, 'reset_parameters'):
             layer.reset_parameters()
+
 class Trainer(ABC):
     def __init__(self, model, device, dataset, criterion, optimizer, epochs, training_portion, batch_size, kfold=False, folds=None):
         self.model = model
@@ -255,6 +256,12 @@ class RegressorTrainer(Trainer):
 
         self.results['training loss'].append(train_loss)
         self.results['validation loss'].append(val_loss)
+
+    def log_fold_results(self, epoch, train_loss, val_results, fold_results):
+        val_loss = val_results
+
+        fold_results['training loss'].append(train_loss)
+        fold_results['validation loss'].append(val_loss)
 
     def display_results(self, epoch, train_loss, val_results):
         val_loss = val_results
