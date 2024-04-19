@@ -30,17 +30,17 @@ def get_criterion(config: str):
 # run program
 if __name__ == "__main__":
     # load configuration
-    config_path = os.path.join(os.path.dirname(__file__), "configs", "config.toml")
+    config_path = "c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/configs/config.toml"
     config = load_config(config_path)
 
     # set the path to save results later on
-    results_path = os.path.join(os.path.dirname(__file__), "results")
+    exp_dir_for_results = "c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results"
 
     # set device
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     # load data
-    data_path = "c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/data/online+retail/scaled_and_encoded_dataset.csv"
+    data_path = config['data path']
     data = pd.read_csv(data_path)
 
     # create sequences
@@ -75,8 +75,15 @@ if __name__ == "__main__":
                                 folds=n_folds)
     
     # save results
-    trainer.save_model_results(results_path)
+    trainer.save_model_results(exp_dir_for_results)
 
     # plot results
-    plotter = ResultsPlotter(results_path)
-    plotter.plot_results()
+    if is_kfold:
+        results_per_fold = trainer.kf_results
+
+        for fold_idx, fold_results in enumerate(results_per_fold):
+            plotter = ResultsPlotter(exp_dir_for_results, fold_results, fold_idx)
+            plotter.plot_regression_results()
+    else:
+        plotter = ResultsPlotter(exp_dir_for_results, trainer.results)
+        plotter.plot_regression_results()

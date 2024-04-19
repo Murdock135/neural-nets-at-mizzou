@@ -12,13 +12,14 @@ def load_config(path_to_config) -> dict:
         return config
 
 class ResultsPlotter:
-    def __init__(self, exp_dir, results):
+    def __init__(self, exp_dir, results, fold_idx=None):
         '''Args:
             exp_dir(string)- directory to export visualizations to
             results(dictionary)- a dict of results where keys are metrics and values are lists
             '''
         self.exp_dir = exp_dir
         self.results: dict = results
+        self.fold_idx = fold_idx
 
     def plot_classification_results(self):
 
@@ -31,7 +32,7 @@ class ResultsPlotter:
         plt.ylabel('Loss')
         plt.legend()
         plt.grid(True)
-        plt.savefig(os.path.join(self.exp_dir, "loss.png"))
+        plt.savefig(os.path.join(self.exp_dir, f"{self.fold_idx+1 if self.fold_idx is not None else ""}_loss.png"))
 
         # Plot accuracy and F1 score on the same graph
         plt.figure(figsize=(10, 6))
@@ -52,16 +53,19 @@ class ResultsPlotter:
         ax.set_ylabel('Accuracy (%)')
         ax.set_ylim(0, 100)  # Set y-axis limits for accuracy
 
-        plt.savefig(os.path.join(self.exp_dir,'accuracy_and_f1.png'))
+        plt.savefig(os.path.join(self.exp_dir,f'{self.fold_idx if self.fold_idx is not None else ""}_accuracy, f1, precision, recall.png'))
 
-def plot_regression_results(self):
-        # Plot Training Loss + Validation Loss on the same graph specifically for regression tasks
-        plt.figure()
-        plt.plot(self.results['training loss'], label='training loss')
-        plt.plot(self.results['validation loss'], label='validation Loss')
-        plt.title('Training and Validation Loss')
-        plt.xlabel('Epoch')
-        plt.ylabel('Loss')
-        plt.legend()
-        plt.grid(True)
-        plt.savefig(os.path.join(self.exp_dir, "regression_loss.png"))
+    def plot_regression_results(self):
+            # Plot Training Loss + Validation Loss on the same graph specifically for regression tasks
+            plt.figure()
+            plt.plot(self.results['training loss'], label='training loss')
+            plt.plot(self.results['validation loss'], label='validation Loss')
+            plt.title('Training and Validation Loss')
+            plt.xlabel('Epoch')
+            plt.ylabel('Loss')
+            plt.legend()
+            plt.grid(True)
+            plt.savefig(os.path.join(self.exp_dir, f"{self.fold_idx if self.fold_idx is not None else ""}_regression_loss.png"))
+
+    def plot_from_csv(self):
+         pass

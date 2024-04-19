@@ -1,3 +1,5 @@
+data_path = "c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/data/online+retail/quantity_per_time_data.csv"
+
 [training]
   batch_size = 32
   epochs = 10
@@ -20,5 +22,6 @@
     # the variable below, 'prediction_window' controls how many time
     # steps forward to predict.
     prediction_window = 1
+
 
 
