@@ -1,0 +1,24 @@
+[training]
+  batch_size = 32
+  epochs = 10
+  training_portion = 0.8
+  optimizer.type = "Adam"
+  optimizer.learning_rate = 0.001
+  # criterion = "Cross Entropy"
+  criterion = "MSE"
+
+
+  [training.k_fold]
+    status = false
+    n_folds = 5
+
+  [model]
+    num_layers = 1
+    hidden_size = 512
+    sequence_length = 7
+
+    # the variable below, 'prediction_window' controls how many time
+    # steps forward to predict.
+    prediction_window = 1
+
+
