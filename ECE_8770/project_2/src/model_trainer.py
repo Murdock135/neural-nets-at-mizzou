@@ -150,7 +150,7 @@ class BaseTrainer(ABC):
             results_df = pd.DataFrame(self.results)
             results_df.to_csv(filename, index=False)
 
-class ClassifierBaseTrainer(BaseTrainer):
+class ClassifierTrainer(BaseTrainer):
     
     def validate(self, val_loader):
         self.model.eval()
@@ -227,7 +227,7 @@ class ClassifierBaseTrainer(BaseTrainer):
         f"recall = {recall}\n")
 
 
-class RegressorBaseTrainer(BaseTrainer):
+class RegressorTrainer(BaseTrainer):
     def validate(self, val_loader):
         self.model.eval()
         total_loss = 0.0
@@ -345,6 +345,6 @@ class RegressorBaseTrainer(BaseTrainer):
 #             results_df.to_csv(filename, index=False)
 
 
-# class RegressorBaseTrainer:
+# class RegressorTrainer:
 #     pass
                 

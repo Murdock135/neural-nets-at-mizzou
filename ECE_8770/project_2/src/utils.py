@@ -4,12 +4,48 @@ import os
 import numpy as np
 import tomllib
 import matplotlib.pyplot as plt
-from .model_trainer import ClassifierTrainer, RegressorTrainer
+from models import FlexibleRNN
+import torch.optim as optim
+import torch.nn as nn
+
 
 def load_config(path_to_config) -> dict:
     with open(path_to_config, "rb") as f:
         config: dict = tomllib.load(f)
         return config
+    
+def get_model(config):
+    model = FlexibleRNN(
+        input_size=config["model"]["input_size"],
+        hidden_size=config["model"]["hidden_size"],
+        output_size=config["model"]["output_size"],
+        num_layers=config["model"]["num_layers"],
+        rnn_type=config["model"]["rnn_type"],
+        prediction_window=config["model"]["prediction_window"],
+        future_strategy=config["model"]["future_strategy"]
+    )
+
+    return model
+
+def get_optimizer(model, config):
+    optimizer_config = config['training']['optimizer']
+    
+    optimizer_type = optimizer_config['type']
+    learning_rate = optimizer_config['learning_rate']
+
+    if optimizer_type.lower() == "adam":
+        return optim.Adam(model.parameters(), lr=learning_rate)
+    elif optimizer_type.lower() == "sgd":
+        return optim.SGD(model.parameters(), lr=learning_rate)
+    
+def get_criterion(config: str):
+    criterion = config['training']['criterion']
+
+    if criterion.lower() == "cross entropy":
+        return nn.CrossEntropyLoss()
+    elif criterion.lower() == "mse":
+        return nn.MSELoss()
+
 
 class ResultsPlotter:
     def __init__(self, exp_dir, results, fold_idx=None):

@@ -40,7 +40,7 @@ def create_sequences(df, sequence_length, prediction_window = 1):
         sequence = data[i:(i + sequence_length)]
 
         # make the last time step the target (many to one)
-        target = data[i+sequence_length : + i+sequence_length+prediction_window]
+        target = data[i+sequence_length: + i+sequence_length+prediction_window]
 
         # store sequence and target
         sequences.append(sequence)

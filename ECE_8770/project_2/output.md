@@ -1,0 +1,13 @@
+* c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2
+    * experiment_runner.py
+    * configs
+        * config.py
+    * notebooks
+        * create_sequences.ipynb
+        * preprocessing.ipynb
+        * utility.ipynb
+    * src
+        * dataset_utils.py
+        * models.py
+        * model_trainer.py
+        * utils.py

@@ -1,32 +1,10 @@
 import torch
 import os
-from src.utils import load_config, ResultsPlotter
+from src.utils import load_config, get_criterion, get_model, get_optimizer, ResultsPlotter
 from src.dataset_utils import CustomDataset, create_sequences
 from src.model_trainer import ClassifierTrainer, RegressorTrainer
-from src.models import myRNN
-import torch.optim as optim
-import torch.nn as nn
 import pandas as pd
 
-
-def get_optimizer(model, config):
-    optimizer_config = config['training']['optimizer']
-    
-    optimizer_type = optimizer_config['type']
-    learning_rate = optimizer_config['learning_rate']
-
-    if optimizer_type.lower() == "adam":
-        return optim.Adam(model.parameters(), lr=learning_rate)
-    elif optimizer_type.lower() == "sgd":
-        return optim.SGD(model.parameters(), lr=learning_rate)
-    
-def get_criterion(config: str):
-    criterion = config['training']['criterion']
-
-    if criterion.lower() == "cross entropy":
-        return nn.CrossEntropyLoss()
-    elif criterion.lower() == "mse":
-        return nn.MSELoss()
 
 # run program
 if __name__ == "__main__":
@@ -53,7 +31,8 @@ if __name__ == "__main__":
     dataset = CustomDataset(X, y, 'mse')
 
     # training parameters
-    model = myRNN(input_dim=sequence_len, hidden_dim=config['model']['hidden_size'], layer_dim=config['model']['num_layers']).to(device)
+    # model = myRNN(input_dim=X.shape[1], hidden_dim=config['model']['hidden_size'], layer_dim=config['model']['num_layers']).to(device)
+    model = get_model(config)
     optimizer = get_optimizer(model, config)
     criterion = get_criterion(config)
     epochs = config['training']['epochs']
@@ -88,3 +67,5 @@ if __name__ == "__main__":
     else:
         plotter = ResultsPlotter(exp_dir_for_results, trainer.results)
         plotter.plot_regression_results()
+    
+    # show plots
