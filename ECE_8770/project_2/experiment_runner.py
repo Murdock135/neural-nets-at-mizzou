@@ -2,7 +2,7 @@ import torch
 import os
 from src.utils import load_config, get_criterion, get_model, get_optimizer, ResultsPlotter
 from src.dataset_utils import CustomDataset, create_sequences
-from src.model_trainer import ClassifierTrainer, RegressorTrainer
+import src.model_trainer as trainers
 import pandas as pd
 
 
@@ -24,35 +24,57 @@ if __name__ == "__main__":
 
     # create sequences
     sequence_len = config['model']['sequence_length']
-    prediction_window = config['model']['prediction_window']
-    X, y = create_sequences(data, sequence_len, prediction_window)
+
+    future_strategy = config['model']['future_strategy']
+    if future_strategy == "fixed_window":
+        prediction_window = config['model']['prediction_window']
+        X, y = create_sequences(data, sequence_len, future_strategy=future_strategy)
+    else:
+        X, y = create_sequences(data, sequence_len, future_strategy=future_strategy)
+
+    input_size = X.shape[-1]
+    output_size = y.shape[-1]
 
     # create dataset
     dataset = CustomDataset(X, y, 'mse')
 
     # training parameters
-    # model = myRNN(input_dim=X.shape[1], hidden_dim=config['model']['hidden_size'], layer_dim=config['model']['num_layers']).to(device)
-    model = get_model(config)
+    model = get_model(config, no_features=input_size, output_size=output_size).to(device)
     optimizer = get_optimizer(model, config)
     criterion = get_criterion(config)
     epochs = config['training']['epochs']
     batch_size = config['training']['batch_size']
     is_kfold = config['training']['k_fold']['status']
+    training_portion = config['training']['training_portion']
 
     if is_kfold:
         n_folds = config['training']['k_fold']['n_folds']
     else:
         n_folds = 0
 
-    trainer = RegressorTrainer(model=model, 
+    # print experiment config
+    print("dataset:")
+    print(f"Inputs = {X[0:5]}")
+    print(f"Outputs = {y[0:5]}")
+    print(f"optimizer: {optimizer}")
+    print(f"epochs: {epochs}")
+    print(f"batch size: {batch_size}")
+    print(f"is_kfold: {is_kfold}")
+    print(f"training portion: {training_portion}")
+
+
+    trainer = trainers.SequentialRegressorTrainer(model=model, 
                                 device=device, 
                                 dataset=dataset, 
                                 criterion=criterion, 
                                 optimizer=optimizer,
                                 epochs=epochs,
+                                training_portion=training_portion,
                                 batch_size=batch_size,
                                 kfold=is_kfold,
                                 folds=n_folds)
+    
+    trainer.train()
     
     # save results
     trainer.save_model_results(exp_dir_for_results)

@@ -22,6 +22,7 @@ checkpoints/
 *.npz
 /data/
 /results/
+/ECE_8770/project_2/results
 
 # Ignore virtual environment
 venv/

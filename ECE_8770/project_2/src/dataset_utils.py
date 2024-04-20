@@ -9,44 +9,48 @@ import torch
 # the following function are specific to the Online retail dataset
 # used for the RNN project and cannot be used for any other project
 # ---------------------------------------------------------------------
-def create_sequences(df, sequence_length, prediction_window = 1):
+import numpy as np
+import pandas as pd
+
+def create_sequences(df, sequence_length, prediction_window=1, future_strategy='many_to_one'):
     """
-    Generates input and target sequences from a DataFrame to prepare data for training RNN models.
-    
-    This function creates overlapping sequences of a specified length from a DataFrame,
-    where each sequence is used as input for RNN predictions. The targets are determined
-    by the prediction_window, allowing for both many-to-one and many-to-many predictions.
+    Generates input and target sequences from a DataFrame for training RNN models, 
+    adjusted for different future strategies.
 
     Parameters:
-    df (pd.DataFrame): DataFrame containing sequential data. Each row is expected to be 
-                       a time step in the sequence.
-    sequence_length (int): The number of time steps in each input sequence.
-    prediction_window (int, optional): The number of future time steps to predict. A value of
-                                       1 indicates a many-to-one prediction, while a value greater
-                                       than 1 indicates a many-to-many prediction.
+    df (pd.DataFrame): DataFrame containing sequential data.
+    sequence_length (int): Number of time steps in each input sequence.
+    prediction_window (int, optional): Number of future time steps to predict.
+    future_strategy (str, optional): Strategy for future prediction ('many_to_one', 'fixed_window', 'sequential').
 
     Returns:
     np.ndarray: An array of input sequences.
-    np.ndarray: An array of targets corresponding to the sequences. Targets can be a single
-                time step or a sequence of time steps, depending on the prediction_window.
+    np.ndarray: An array of targets corresponding to the sequences.
     """
-    
+    data = df.values
     sequences = []
     targets = []
-    data = df.values
 
-    for i in range(len(data) - sequence_length):
-        # create input sequence
-        sequence = data[i:(i + sequence_length)]
-
-        # make the last time step the target (many to one)
-        target = data[i+sequence_length: + i+sequence_length+prediction_window]
-
-        # store sequence and target
+    for i in range(len(data) - sequence_length - prediction_window + 1):
+        sequence = data[i:i + sequence_length]
         sequences.append(sequence)
+
+        if future_strategy == 'many_to_one':
+            # Many-to-One: The target is the next single timestep after the sequence
+            target = data[i + sequence_length]
+        elif future_strategy == 'fixed_window':
+            # Fixed Window: The targets are the next 'prediction_window' timesteps
+            target = data[i + sequence_length:i + sequence_length + prediction_window]
+        elif future_strategy == 'sequential':
+            # Sequential: Every timestep in the input predicts the next timestep
+            target = data[i + 1:i + 1 + sequence_length]
+        else:
+            raise ValueError("Unsupported future strategy specified.")
+
         targets.append(target)
 
-    return np.array(sequences), np.array(targets)# -----------------------------------------------------------------------
+    return np.array(sequences), np.array(targets)
+#----------------------------------------------------------------------------------------------------------------
 
 class CustomDataset(Dataset):
     def __init__(self, X, y, loss_func):

@@ -4,7 +4,7 @@ import os
 import numpy as np
 import tomllib
 import matplotlib.pyplot as plt
-from models import FlexibleRNN
+from .models import FlexibleRNN
 import torch.optim as optim
 import torch.nn as nn
 
@@ -14,13 +14,13 @@ def load_config(path_to_config) -> dict:
         config: dict = tomllib.load(f)
         return config
     
-def get_model(config):
+def get_model(config, no_features, output_size):
     model = FlexibleRNN(
-        input_size=config["model"]["input_size"],
+        input_size=no_features,
         hidden_size=config["model"]["hidden_size"],
-        output_size=config["model"]["output_size"],
+        output_size=output_size,
         num_layers=config["model"]["num_layers"],
-        rnn_type=config["model"]["rnn_type"],
+        rnn_type=config["model"]["type"],
         prediction_window=config["model"]["prediction_window"],
         future_strategy=config["model"]["future_strategy"]
     )

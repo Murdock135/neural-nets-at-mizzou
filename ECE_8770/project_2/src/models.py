@@ -12,11 +12,12 @@ class FlexibleRNN(nn.Module):
         self.num_layers = num_layers
         self.prediction_window = prediction_window
         self.future_strategy = future_strategy  # 'sequential', 'fixed_window', or 'many_to_one'
+        self.rnn_type = rnn_type.lower()
 
         # Initialize the appropriate RNN layer
-        if rnn_type == 'lstm':
+        if rnn_type.lower() == 'lstm':
             self.rnn = nn.LSTM(input_size, hidden_size, num_layers, batch_first=True, dropout=dropout)
-        elif rnn_type == 'gru':
+        elif rnn_type.lower() == 'gru':
             self.rnn = nn.GRU(input_size, hidden_size, num_layers, batch_first=True, dropout=dropout)
         else:
             self.rnn = nn.RNN(input_size, hidden_size, num_layers, batch_first=True, dropout=dropout)
@@ -35,7 +36,7 @@ class FlexibleRNN(nn.Module):
     def forward(self, x):
         # Initial hidden state
         h0 = torch.zeros(self.num_layers, x.size(0), self.hidden_size).to(x.device)
-        c0 = torch.zeros(self.num_layers, x.size(0), self.hidden_size).to(x.device) if hasattr(self.rnn, 'LSTM') else None
+        c0 = torch.zeros(self.num_layers, x.size(0), self.hidden_size).to(x.device) if self.rnn_type == 'lstm' else None
 
         # Forward pass
         if isinstance(self.rnn, nn.LSTM):

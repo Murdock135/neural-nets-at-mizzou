@@ -96,9 +96,10 @@ class BaseTrainer(ABC):
         self.create_results_dict()
 
         for epoch in tqdm(range(self.epochs)):
+            print("Epoch ", epoch)
             train_loss = self.train_one_epoch(train_loader)
             val_results = self.validate(val_loader)
-            self.log_epoch_results(epoch, train_loss, val_results)
+            self.log_epoch_results(train_loss, val_results)
 
             if (epoch+1) % 10 == 0:
                 self.display_results(epoch, train_loss, val_results)
@@ -109,8 +110,8 @@ class BaseTrainer(ABC):
             train_subsampler = torch.utils.data.SubsetRandomSampler(train_idx)
             val_subsampler = torch.utils.data.SubsetRandomSampler(val_idx)
 
-            train_loader = torch.utils.data.Dataloader(self.dataset, batch_size=self.batch_size, sampler=train_subsampler)
-            val_loader = torch.utils.data.Dataloader(self.dataset, batch_size=self.batch_size, sampler=val_subsampler)
+            train_loader = torch.utils.data.DataLoader(self.dataset, batch_size=self.batch_size, sampler=train_subsampler)
+            val_loader = torch.utils.data.DataLoader(self.dataset, batch_size=self.batch_size, sampler=val_subsampler)
 
             # create a dictionary to store fold results
             metrics: list = self.define_metrics()
@@ -277,7 +278,7 @@ class RegressorTrainer(BaseTrainer):
 
 # ---------------------------------------------------------------------------------------------------------------------------------------
 # Trainers for sequential data
-class SequentialClassifierTrainer(BaseTrainer):
+class SequentialClassifierTrainer(ClassifierTrainer):
     def validate(self, val_loader):
         self.model.eval()
         total_loss = 0.0
@@ -316,11 +317,11 @@ class SequentialClassifierTrainer(BaseTrainer):
         val_loss, accuracy = val_results
         print(f"Epoch {epoch+1}: Training loss = {train_loss}, Validation loss = {val_loss}, Accuracy = {accuracy}%")
                 
-class SequentialRegressorTrainer(BaseTrainer):
+class SequentialRegressorTrainer(RegressorTrainer):
     def validate(self, val_loader):
         self.model.eval()
         total_loss = 0.0
-
+        print("hi")
         with torch.no_grad():
             for batch_idx, data in enumerate(val_loader):
                 inputs, targets = data
