@@ -23,6 +23,7 @@ checkpoints/
 /data/
 /results/
 /ECE_8770/project_2/results
+/ECE_8770/project_2/data
 
 # Ignore virtual environment
 venv/

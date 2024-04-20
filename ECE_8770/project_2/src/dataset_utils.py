@@ -12,7 +12,7 @@ import torch
 import numpy as np
 import pandas as pd
 
-def create_sequences(df, sequence_length, prediction_window=1, future_strategy='many_to_one'):
+def create_sequences(df, sequence_length, column=None, prediction_window=1, future_strategy='many_to_one'):
     """
     Generates input and target sequences from a DataFrame for training RNN models, 
     adjusted for different future strategies.
@@ -27,7 +27,9 @@ def create_sequences(df, sequence_length, prediction_window=1, future_strategy='
     np.ndarray: An array of input sequences.
     np.ndarray: An array of targets corresponding to the sequences.
     """
-    data = df.values
+    # data = df.values if column is None else pd.DataFrame(df[column]).values
+    data = df.values if column is None else df[column].to_numpy().reshape(-1,1)
+
     sequences = []
     targets = []
 

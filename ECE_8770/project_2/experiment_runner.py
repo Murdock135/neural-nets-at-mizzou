@@ -19,8 +19,11 @@ if __name__ == "__main__":
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     # load data
-    data_path = config['data_path']
+    data_path = config['data']['data_path']
     data = pd.read_csv(data_path)
+
+    # get column to make sequences out of
+    column = config['data']['column'] if 'column' in config['data'] else None
 
     # create sequences
     sequence_len = config['model']['sequence_length']
@@ -28,9 +31,9 @@ if __name__ == "__main__":
     future_strategy = config['model']['future_strategy']
     if future_strategy == "fixed_window":
         prediction_window = config['model']['prediction_window']
-        X, y = create_sequences(data, sequence_len, future_strategy=future_strategy)
+        X, y = create_sequences(data, sequence_len, future_strategy=future_strategy, prediction_window=prediction_window, column=column)
     else:
-        X, y = create_sequences(data, sequence_len, future_strategy=future_strategy)
+        X, y = create_sequences(data, sequence_len, future_strategy=future_strategy, column=column)
 
     input_size = X.shape[-1]
     output_size = y.shape[-1]

@@ -1,3 +1,8 @@
+[data_1]
+data_path = "c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/data/msft_stock/msft_stock_close.csv"
+column = "Close"
+
+[data_2]
 data_path = "c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/data/online+retail/quantity_per_time_data.csv"
 
 [training]
@@ -6,7 +11,6 @@ epochs = 10
 training_portion = 0.8
 optimizer = {type = "Adam", learning_rate = 0.001}
 criterion = "MSE"
-
 
   [training.k_fold]
   status = false
