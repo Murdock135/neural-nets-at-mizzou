@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 from .models import FlexibleRNN
 import torch.optim as optim
 import torch.nn as nn
+from datetime import datetime
 
 
 def load_config(path_to_config) -> dict:
@@ -48,7 +49,7 @@ def get_criterion(config: str):
 
 
 class ResultsPlotter:
-    def __init__(self, exp_dir, results, fold_idx=None):
+    def __init__(self, exp_dir, results, fold_idx=None, config=None):
         '''Args:
             exp_dir(string)- directory to export visualizations to
             results(dictionary)- a dict of results where keys are metrics and values are lists
@@ -56,6 +57,18 @@ class ResultsPlotter:
         self.exp_dir = exp_dir
         self.results: dict = results
         self.fold_idx = fold_idx
+
+        # unpack config
+        if config is not None:
+            self.config = config
+
+            self.optimizer_type = config['training']['optimizer']['type']
+            self.lr = config['training']['optimizer']['learning_rate']
+            self.batch_size = config['training']['batch_size']
+            self.criterion = config['training']['criterion']
+            self.rnn_type = config['model']['type']
+            self.seq_len = config['model']['sequence_length']
+            self.future_strategy = config['model']['future_strategy']
 
     def plot_classification_results(self):
 
@@ -89,7 +102,16 @@ class ResultsPlotter:
         ax.set_ylabel('Accuracy (%)')
         ax.set_ylim(0, 100)  # Set y-axis limits for accuracy
 
-        plt.savefig(os.path.join(self.exp_dir,f'{self.fold_idx if self.fold_idx is not None else ""}_accuracy, f1, precision, recall.png'))
+        # Adding configuration details below the plot
+        plt.figtext(0.5, 0.01, self.format_config_details(), ha="center", fontsize=9, wrap=True)
+        # plt.tight_layout(rect=[0, 0.05, 1, 1]) # Adjust layout to make room for text
+        plt.subplots_adjust(bottom=0.3)
+
+        # save fig
+        now = datetime.now()
+        timestamp = now.strftime("%Y-%m-%d_%H-%M-%S")
+        fold_part = f"fold_{self.fold_idx}_" if self.fold_idx is not None else ""
+        plt.savefig(os.path.join(self.exp_dir, f"f{timestamp}_{fold_part}_classification_results"))
 
     def plot_regression_results(self):
             # Plot Training Loss + Validation Loss on the same graph specifically for regression tasks
@@ -101,7 +123,29 @@ class ResultsPlotter:
             plt.ylabel('Loss')
             plt.legend()
             plt.grid(True)
-            plt.savefig(os.path.join(self.exp_dir, f"{self.fold_idx if self.fold_idx is not None else ''}_regression_loss.png"))
+
+            # Adding configuration details below the plot
+            plt.figtext(0.5, 0.01, self.format_config_details(), ha="center", fontsize=9, wrap=True)
+            plt.subplots_adjust(bottom=0.2)
+            # plt.tight_layout(rect=[0, 0.05, 1, 1]) # Adjust layout to make room for text
+
+            # save fig
+            now = datetime.now()
+            timestamp = now.strftime("%Y-%m-%d_%H-%M-%S")
+            fold_part = f"fold_{self.fold_idx}_" if self.fold_idx is not None else ""
+            plt.savefig(os.path.join(self.exp_dir, f"{timestamp}_{fold_part}_regression_loss"))
 
     def plot_from_csv(self):
          pass
+    
+    def format_config_details(self):
+        details = "Configuration Details:\n"
+        if self.config:
+            details += f"Model type: {self.rnn_type}, "
+            details += f"Optimizer: {self.optimizer_type}, LR: {self.lr}, "
+            details += f"Criterion: {self.criterion}, Seq Len: {self.seq_len}, "
+            details += f"Batch Size: {self.batch_size}, "
+            details += f"Future strategy: {self.future_strategy}"
+
+        return details
+

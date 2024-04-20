@@ -321,7 +321,7 @@ class SequentialRegressorTrainer(RegressorTrainer):
     def validate(self, val_loader):
         self.model.eval()
         total_loss = 0.0
-        
+
         with torch.no_grad():
             for batch_idx, data in enumerate(val_loader):
                 inputs, targets = data

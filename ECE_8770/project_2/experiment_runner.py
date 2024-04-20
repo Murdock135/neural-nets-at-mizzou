@@ -19,11 +19,12 @@ if __name__ == "__main__":
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     # load data
-    data_path = config['data']['data_path']
+    data_name = 'data_1' # in the TOML file, there are several datasets.
+    data_path = config[data_name]['data_path']
     data = pd.read_csv(data_path)
 
     # get column to make sequences out of
-    column = config['data']['column'] if 'column' in config['data'] else None
+    column = config[data_name]['column'] if 'column' in config[data_name] else None
 
     # create sequences
     sequence_len = config['model']['sequence_length']
@@ -56,15 +57,12 @@ if __name__ == "__main__":
         n_folds = 0
 
     # print experiment config
-    print("dataset:")
-    print(f"Inputs = {X[0:5]}")
-    print(f"Outputs = {y[0:5]}")
+    print(f"dataset: {data_path}")
     print(f"optimizer: {optimizer}")
     print(f"epochs: {epochs}")
     print(f"batch size: {batch_size}")
     print(f"is_kfold: {is_kfold}")
     print(f"training portion: {training_portion}")
-
 
     trainer = trainers.SequentialRegressorTrainer(model=model, 
                                 device=device, 
@@ -87,10 +85,10 @@ if __name__ == "__main__":
         results_per_fold = trainer.kf_results
 
         for fold_idx, fold_results in enumerate(results_per_fold):
-            plotter = ResultsPlotter(exp_dir_for_results, fold_results, fold_idx)
+            plotter = ResultsPlotter(exp_dir_for_results, fold_results, fold_idx, config=config)
             plotter.plot_regression_results()
     else:
-        plotter = ResultsPlotter(exp_dir_for_results, trainer.results)
+        plotter = ResultsPlotter(exp_dir_for_results, trainer.results, config=config)
         plotter.plot_regression_results()
     
     # show plots
