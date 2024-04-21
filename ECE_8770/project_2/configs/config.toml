@@ -17,12 +17,12 @@ criterion = "MSE"
   n_folds = 5
 
 [model]
-type = 'lstm' # Type ('rnn', 'gru', 'lstm')
+type = 'rnn' # Type ('rnn', 'gru', 'lstm')
 num_layers = 1
 hidden_size = 512
-sequence_length = 7
-future_strategy = "many_to_one" # options: ['many_to_one', 'sequential', 'fixed_window']
-prediction_window = 1 # Number of time steps to predict (only applied if future_strategy == 'fixed_window')
+sequence_length = 1
+future_strategy = "sequential" # options: ['many_to_one', 'sequential', 'fixed_window']
+prediction_window = 4 # Number of time steps to predict (only applied if future_strategy == 'fixed_window')
 
 [output]
 results_dir = "c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results"
