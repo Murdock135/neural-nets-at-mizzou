@@ -437,6 +437,7 @@ class SequentialRegressorTrainer(RegressorTrainer):
                 if self.model.future_strategy == 'many_to_one':
                     # For many-to-one, targets are typically a single value per sequence
                     loss = self.criterion(outputs, targets)
+                    time_idx = time_idx.flatten()
                 elif self.model.future_strategy in ['sequential', 'fixed_window']:
                     # For sequential or fixed_window, reshape outputs to match targets if necessary
                     # This assumes that targets are appropriately shaped for these strategies

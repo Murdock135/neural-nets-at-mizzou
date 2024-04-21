@@ -163,7 +163,7 @@ class ResultsPlotter:
 
         # Adding configuration details below the plot
         plt.figtext(0.5, 0.01, self.format_config_details(), ha="center", fontsize=9, wrap=True)
-        plt.subplots_adjust(bottom=0.2)
+        plt.subplots_adjust(bottom=0.3)
         # plt.tight_layout(rect=[0, 0.05, 1, 1]) # Adjust layout to make room for text
 
         # save fig
