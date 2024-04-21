@@ -1,7 +1,7 @@
 import torch
 import os
 from src.utils import load_config, get_criterion, get_model, get_optimizer, ResultsPlotter
-from src.dataset_utils import CustomDataset, create_sequences
+from src.dataset_utils import CustomDataset, TemporalCustomDataset, create_sequences
 import src.model_trainer as trainers
 import pandas as pd
 
@@ -21,7 +21,7 @@ if __name__ == "__main__":
     # load data
     data_name = 'data_1' # in the TOML file, there are several datasets.
     data_path = config[data_name]['data_path']
-    data = pd.read_csv(data_path)
+    data = pd.read_csv(data_path, index_col=0)
 
     # get column to make sequences out of
     column = config[data_name]['column'] if 'column' in config[data_name] else None
@@ -32,15 +32,16 @@ if __name__ == "__main__":
     future_strategy = config['model']['future_strategy']
     if future_strategy == "fixed_window":
         prediction_window = config['model']['prediction_window']
-        X, y = create_sequences(data, sequence_len, future_strategy=future_strategy, prediction_window=prediction_window, column=column)
+        X, y, t = create_sequences(data, sequence_len, future_strategy=future_strategy, prediction_window=prediction_window, column=column)
     else:
-        X, y = create_sequences(data, sequence_len, future_strategy=future_strategy, column=column)
+        X, y, t = create_sequences(data, sequence_len, future_strategy=future_strategy, column=column)
 
     input_size = X.shape[-1]
     output_size = y.shape[-1]
 
     # create dataset
-    dataset = CustomDataset(X, y, 'mse')
+    # dataset = CustomDataset(X, y, 'mse')
+    dataset = TemporalCustomDataset(X, y, t, 'mse')
 
     # training parameters
     model = get_model(config, no_features=input_size, output_size=output_size).to(device)

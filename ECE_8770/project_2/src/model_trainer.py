@@ -7,7 +7,7 @@ from sklearn import metrics
 from sklearn.model_selection import KFold
 from tqdm import tqdm
 from datetime import datetime
-from .dataset_utils import CustomDataLoader
+from .dataset_utils import CustomDataLoader, temporal_collate_fn
 from abc import ABC, abstractmethod
 
 
@@ -36,6 +36,7 @@ class BaseTrainer(ABC):
             self.kf_results = []
         else:
             self.results = None
+
 
     def train_one_epoch(self, train_loader):
         self.model.train()
@@ -95,13 +96,20 @@ class BaseTrainer(ABC):
         train_loader, val_loader = self.create_data_loaders()
         self.create_results_dict()
 
-        for epoch in tqdm(range(self.epochs)):
+        for epoch in tqdm(range(1, self.epochs+1)):
             print("Epoch ", epoch)
+
+            # train
             train_loss = self.train_one_epoch(train_loader)
+
+            # validate
             val_results = self.validate(val_loader)
+
+            # log results
             self.log_epoch_results(train_loss, val_results)
 
-            if (epoch+1) % 10 == 0:
+            # print out results every 10th epoch
+            if (epoch) % 10 == 0:
                 self.display_results(epoch, train_loss, val_results)
 
     def train_and_validate_kfold(self):
@@ -145,13 +153,13 @@ class BaseTrainer(ABC):
         if self.kfold:
             # iterate over results of each fold and log results to a csv
             for fold_idx, fold_results in enumerate(self.kf_results):
-                filename = os.path.join(exp_dir, f"fold_{fold_idx}_results_{date_time_str}.csv")
+                results_file_name = os.path.join(exp_dir, f"fold_{fold_idx}_results_{date_time_str}.csv")
                 results_df = pd.DataFrame(fold_results)
-                results_df.to_csv(filename, index=False)
+                results_df.to_csv(results_file_name, index=False)
         else:
-            filename = os.path.join(exp_dir, f"results_{date_time_str}.csv")
+            results_file_name = os.path.join(exp_dir, f"results_{date_time_str}.csv")
             results_df = pd.DataFrame(self.results)
-            results_df.to_csv(filename, index=False)
+            results_df.to_csv(results_file_name, index=False)
 
 # -------------------------------------------------------------------------------------------------------------------------------------
 # General purpose trainers
@@ -278,7 +286,31 @@ class RegressorTrainer(BaseTrainer):
 
 # ---------------------------------------------------------------------------------------------------------------------------------------
 # Trainers for sequential data
+
 class SequentialClassifierTrainer(ClassifierTrainer):
+    def train_one_epoch(self, train_loader):
+        self.model.train()
+        epoch_loss = 0.0
+
+        for batch_idx, data in enumerate(train_loader):
+            time_idx, inputs, labels = data  # Unpack the tuple with datetime_idx
+
+            inputs = inputs.to(self.device)
+            labels = labels.to(self.device)
+
+            self.optimizer.zero_grad()
+
+            outputs = self.model(inputs)
+            loss = self.criterion(outputs, labels)
+
+            epoch_loss += loss.item()
+
+            loss.backward()
+            self.optimizer.step()
+
+        avg_loss = epoch_loss / len(train_loader)
+        return avg_loss
+      
     def validate(self, val_loader):
         self.model.eval()
         total_loss = 0.0
@@ -287,7 +319,7 @@ class SequentialClassifierTrainer(ClassifierTrainer):
 
         with torch.no_grad():
             for batch_idx, data in enumerate(val_loader):
-                inputs, labels = data
+                time_idx, inputs, labels = data
                 inputs = inputs.to(self.device)
                 labels = labels.to(self.device)
 
@@ -303,6 +335,9 @@ class SequentialClassifierTrainer(ClassifierTrainer):
 
         accuracy = 100 * correct / total_labels
         return total_loss / len(val_loader), accuracy
+    
+    def create_data_loaders(self):
+        return CustomDataLoader(self.dataset, self.training_portion, self.batch_size, shuffle=True, collate_fn=temporal_collate_fn)
 
     def define_metrics(self):
         return ['training loss', 'validation loss', 'accuracy']
@@ -318,13 +353,45 @@ class SequentialClassifierTrainer(ClassifierTrainer):
         print(f"Epoch {epoch+1}: Training loss = {train_loss}, Validation loss = {val_loss}, Accuracy = {accuracy}%")
                 
 class SequentialRegressorTrainer(RegressorTrainer):
+    def train_one_epoch(self, train_loader):
+        self.model.train()
+        epoch_loss = 0.0
+
+        for batch_idx, data in enumerate(train_loader):
+            time_idx, inputs, targets = data  # Adjust to unpack the datetime_idx
+
+            # move inputs and outputs to device
+            inputs = inputs.to(self.device)
+            targets = targets.to(self.device)
+
+            # clear gradients
+            self.optimizer.zero_grad()
+
+            # forward pass
+            outputs = self.model(inputs)
+            loss = self.criterion(outputs, targets)
+            
+            # accumulate loss
+            epoch_loss += loss.item()
+
+            # backward pass (optimize)
+            loss.backward()
+            self.optimizer.step()
+
+        avg_loss = epoch_loss / len(train_loader)
+        return avg_loss
+    
     def validate(self, val_loader):
         self.model.eval()
+
         total_loss = 0.0
+        predictions = []
+        truths = []
+        datetime_indices = []
 
         with torch.no_grad():
             for batch_idx, data in enumerate(val_loader):
-                inputs, targets = data
+                time_idx, inputs, targets = data
                 inputs = inputs.to(self.device)
                 targets = targets.to(self.device)
 
@@ -339,18 +406,84 @@ class SequentialRegressorTrainer(RegressorTrainer):
                     # This assumes that targets are appropriately shaped for these strategies
                     outputs = outputs.view(-1, outputs.shape[-1])  # Flatten output for batch processing
                     targets = targets.view(-1, targets.shape[-1])  # Flatten targets to match output
+                    time_idx = time_idx.flatten() # Flatten time indices to match output
                     loss = self.criterion(outputs, targets)
                 
                 total_loss += loss.item()
 
-        return total_loss / len(val_loader)
+                # collect predictions, truths and datetime_indices for this batch
+                predictions.extend(outputs.cpu().numpy())
+                truths.extend(targets.cpu().numpy())
+
+                # reshape datetime_indices to match the shape of predictions and truths
+                datetime_indices.extend(time_idx)
+
+        avg_loss = total_loss / len(val_loader)
+        return avg_loss, predictions, truths, datetime_indices
+    
+    def create_data_loaders(self):
+        return CustomDataLoader(self.dataset, self.training_portion, self.batch_size, shuffle=True, collate_fn=temporal_collate_fn)
 
     def define_metrics(self):
-        return ['training loss', 'validation loss']
+        return ['training loss', 'validation loss', 'predictions', 'truths', 'datetime indices']
 
-    def log_epoch_results(self, train_loss, val_loss):
+    def log_epoch_results(self, train_loss, val_results):
+        val_loss, predictions, truths, datetime_indices = val_results
         self.results['training loss'].append(train_loss)
         self.results['validation loss'].append(val_loss)
+        self.results['predictions'].extend(predictions)
+        self.results['truths'].extend(truths)
+        self.results['datetime indices'].extend(datetime_indices)
 
     def display_results(self, epoch, train_loss, val_loss):
         print(f"Epoch {epoch+1}: Training loss = {train_loss}, Validation loss = {val_loss}")
+
+    def save_model_results(self, exp_dir):
+    # get current date and time
+        now = datetime.now()
+        date_time_str = now.strftime("%Y-%m-%d_%H-%M-%S")
+
+        if self.kfold:
+            # iterate over results of each fold and log results to a csv
+            for fold_idx, fold_results in enumerate(self.kf_results):
+                # store forecast values in separate dataframe
+                forecast = dict()
+
+                for key, values in fold_results.items():
+                    if key in ["predictions", "truths", "datetime indices"]:
+                        forecast[key] = values
+
+                # delete predictions, truths and datetime indices from fold_results
+                del fold_results['predictions']
+                del fold_results['truths']
+                del fold_results['datetime indices']
+
+                results_file_name = os.path.join(exp_dir, f"fold_{fold_idx}_results_{date_time_str}.csv")
+                forecast_file_name = os.path.join(exp_dir, f"fold_{fold_idx}_forecast_{date_time_str}.csv")
+
+                results_df = pd.DataFrame(fold_results)
+                forecast_df = pd.DataFrame(forecast)
+
+                results_df.to_csv(results_file_name, index=False)
+                forecast_df.to_csv(forecast_file_name, index=False)
+        else:
+            # store forecast values in separate dataframe
+            forecast = dict()
+
+            for key, values in self.results.items():
+                if key in ["predictions", "truths", "datetime indices"]:
+                    forecast[key] = values
+
+            del self.results['predictions']
+            del self.results['truths']
+            del self.results['datetime indices']
+
+            results_file_name = os.path.join(exp_dir, f"results_{date_time_str}.csv")
+            forecast_file_name = os.path.join(exp_dir, f"forecast_{date_time_str}.csv")
+
+            results_df = pd.DataFrame(self.results)
+            forecast_df = pd.DataFrame(forecast)
+
+            results_df.to_csv(results_file_name, index=False)
+            forecast_df.to_csv(forecast_file_name, index=False)
+
