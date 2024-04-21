@@ -91,5 +91,7 @@ if __name__ == "__main__":
     else:
         plotter = ResultsPlotter(exp_dir_for_results, trainer.results, config=config)
         plotter.plot_regression_results()
+
+    # plot forecast
     
     # show plots
