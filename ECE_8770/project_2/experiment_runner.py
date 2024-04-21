@@ -88,9 +88,11 @@ if __name__ == "__main__":
         for fold_idx, fold_results in enumerate(results_per_fold):
             plotter = ResultsPlotter(exp_dir_for_results, fold_results, fold_idx, config=config)
             plotter.plot_regression_results()
+            plotter.plot_forecast()
     else:
-        plotter = ResultsPlotter(exp_dir_for_results, trainer.results, config=config)
+        plotter = ResultsPlotter(exp_dir_for_results, trainer.results, config=config, forecast_results=trainer.forecast)
         plotter.plot_regression_results()
+        plotter.plot_forecast()
 
     # plot forecast
     

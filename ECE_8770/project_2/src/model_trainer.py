@@ -106,7 +106,7 @@ class BaseTrainer(ABC):
             val_results = self.validate(val_loader)
 
             # log results
-            self.log_epoch_results(train_loss, val_results)
+            self.log_epoch_results(epoch, train_loss, val_results)
 
             # print out results every 10th epoch
             if (epoch) % 10 == 0:
@@ -207,7 +207,7 @@ class ClassifierTrainer(BaseTrainer):
     def define_metrics(self):
         return ['training loss', 'validation loss', 'accuracy', 'f1 score', 'precision', 'recall']
     
-    def log_epoch_results(self, train_loss, val_results):
+    def log_epoch_results(self, epoch, train_loss, val_results):
         val_loss, val_accuracy, f1, precision, recall = val_results
 
         self.results['training loss'].append(train_loss)
@@ -285,9 +285,13 @@ class RegressorTrainer(BaseTrainer):
         f"Validation loss = {val_loss}\n")
 
 # ---------------------------------------------------------------------------------------------------------------------------------------
-# Trainers for sequential data
+# Trainers for sequential data (N.B. READ NOTE AT THE END)
 
 class SequentialClassifierTrainer(ClassifierTrainer):
+    def __init__(self, model, device, dataset, criterion, optimizer, epochs, training_portion, batch_size, kfold=False, folds=None):
+        super().__init__(model, device, dataset, criterion, optimizer, epochs, training_portion, batch_size, kfold, folds)
+        self.forecast = {'predictions':[], 'truths':[], 'datetime indices':[]}
+
     def train_one_epoch(self, train_loader):
         self.model.train()
         epoch_loss = 0.0
@@ -314,6 +318,11 @@ class SequentialClassifierTrainer(ClassifierTrainer):
     def validate(self, val_loader):
         self.model.eval()
         total_loss = 0.0
+
+        predictions = []
+        truths = []
+        datetime_indices = []
+
         correct = 0
         total_labels = 0
 
@@ -324,35 +333,62 @@ class SequentialClassifierTrainer(ClassifierTrainer):
                 labels = labels.to(self.device)
 
                 outputs = self.model(inputs)
-                loss = self.criterion(outputs, labels)
+
+                if outputs.dim() > 2 and outputs.shape[-1] == labels.shape[-1]:
+                    # flatten if (sequential prediction)
+                    outputs_flat = outputs.view(-1, outputs.shape[-1])
+                    labels_flat = labels.view(-1, outputs.shape[-1])
+                else:
+                    outputs_flat = outputs
+                    labels_flat = labels
+                
+                loss = self.criterion(outputs_flat, labels_flat)
                 total_loss += loss.item()
 
-                # Depending on the output shape, adjust the accuracy calculation
-                if self.model.future_strategy in ['many_to_one', 'sequential']:
-                    _, predicted = torch.max(outputs, -1)
-                    correct += (predicted == labels).sum().item()
-                    total_labels += labels.numel()
+                # Calculate accuracy
+                _, predicted = torch.max(outputs_flat, 1)
+                correct += (predicted == labels_flat).sum().item()
+                total_labels += labels_flat.size(0)
+
+                # Store predictions and truths for detailed analysis
+                predictions.extend(predicted.cpu().numpy())
+                truths.extend(labels_flat.cpu().numpy())
+                datetime_indices.extend(time_idx.flatten().cpu().numpy())
 
         accuracy = 100 * correct / total_labels
-        return total_loss / len(val_loader), accuracy
+        avg_loss = total_loss / len(val_loader)
+
+        return avg_loss, accuracy, predictions, truths, datetime_indices
     
     def create_data_loaders(self):
         return CustomDataLoader(self.dataset, self.training_portion, self.batch_size, shuffle=True, collate_fn=temporal_collate_fn)
 
     def define_metrics(self):
-        return ['training loss', 'validation loss', 'accuracy']
+        return ['training loss', 'validation loss', 'accuracy', 'predictions', 'truths', 'datetime indices']
 
-    def log_epoch_results(self, train_loss, val_results):
-        val_loss, accuracy = val_results
+    def log_epoch_results(self, epoch, train_loss, val_results):
+        val_loss, accuracy, predictions, truths, datetime_indices = val_results
+
+        # store preformance metrics results
         self.results['training loss'].append(train_loss)
         self.results['validation loss'].append(val_loss)
         self.results['accuracy'].append(accuracy)
+
+        if epoch == self.epochs:
+            # store predictions and truths if on last epoch
+            self.forecast['predictions'].extend(predictions)
+            self.forecast['truths'].extend(truths)
+            self.forecast['datetime indices'].extend(datetime_indices)
 
     def display_results(self, epoch, train_loss, val_results):
         val_loss, accuracy = val_results
         print(f"Epoch {epoch+1}: Training loss = {train_loss}, Validation loss = {val_loss}, Accuracy = {accuracy}%")
                 
 class SequentialRegressorTrainer(RegressorTrainer):
+    def __init__(self, model, device, dataset, criterion, optimizer, epochs, training_portion, batch_size, kfold=False, folds=None):
+        super().__init__(model, device, dataset, criterion, optimizer, epochs, training_portion, batch_size, kfold, folds)
+        self.forecast = {'predictions':[], 'truths':[], 'datetime indices':[]}
+
     def train_one_epoch(self, train_loader):
         self.model.train()
         epoch_loss = 0.0
@@ -427,15 +463,21 @@ class SequentialRegressorTrainer(RegressorTrainer):
     def define_metrics(self):
         return ['training loss', 'validation loss', 'predictions', 'truths', 'datetime indices']
 
-    def log_epoch_results(self, train_loss, val_results):
+    def log_epoch_results(self, epoch, train_loss, val_results):
         val_loss, predictions, truths, datetime_indices = val_results
+
+        # store preformance metrics results
         self.results['training loss'].append(train_loss)
         self.results['validation loss'].append(val_loss)
-        self.results['predictions'].extend(predictions)
-        self.results['truths'].extend(truths)
-        self.results['datetime indices'].extend(datetime_indices)
 
-    def display_results(self, epoch, train_loss, val_loss):
+        if epoch == self.epochs:
+            # store predictions and truths if on last epoch
+            self.forecast['predictions'].extend(predictions)
+            self.forecast['truths'].extend(truths)
+            self.forecast['datetime indices'].extend(datetime_indices)
+
+    def display_results(self, epoch, train_loss, val_results):
+        val_loss, predictions, truths, datetime_indices = val_results
         print(f"Epoch {epoch+1}: Training loss = {train_loss}, Validation loss = {val_loss}")
 
     def save_model_results(self, exp_dir):
@@ -443,47 +485,57 @@ class SequentialRegressorTrainer(RegressorTrainer):
         now = datetime.now()
         date_time_str = now.strftime("%Y-%m-%d_%H-%M-%S")
 
-        if self.kfold:
-            # iterate over results of each fold and log results to a csv
-            for fold_idx, fold_results in enumerate(self.kf_results):
-                # store forecast values in separate dataframe
-                forecast = dict()
+        # if self.kfold:
+        #     # iterate over results of each fold and log results to a csv
+        #     for fold_idx, fold_results in enumerate(self.kf_results):
 
-                for key, values in fold_results.items():
-                    if key in ["predictions", "truths", "datetime indices"]:
-                        forecast[key] = values
+        #         results_file_name = os.path.join(exp_dir, f"fold_{fold_idx}_results_{date_time_str}.csv")
+        #         forecast_file_name = os.path.join(exp_dir, f"fold_{fold_idx}_forecast_{date_time_str}.csv")
 
-                # delete predictions, truths and datetime indices from fold_results
-                del fold_results['predictions']
-                del fold_results['truths']
-                del fold_results['datetime indices']
+        #         results_df = pd.DataFrame(fold_results)
+        #         forecast_df = pd.DataFrame(forecast)
 
-                results_file_name = os.path.join(exp_dir, f"fold_{fold_idx}_results_{date_time_str}.csv")
-                forecast_file_name = os.path.join(exp_dir, f"fold_{fold_idx}_forecast_{date_time_str}.csv")
-
-                results_df = pd.DataFrame(fold_results)
-                forecast_df = pd.DataFrame(forecast)
-
-                results_df.to_csv(results_file_name, index=False)
-                forecast_df.to_csv(forecast_file_name, index=False)
-        else:
+        #         results_df.to_csv(results_file_name, index=False)
+        #         forecast_df.to_csv(forecast_file_name, index=False)
+        # else:
             # store forecast values in separate dataframe
-            forecast = dict()
+        del self.results['predictions']
+        del self.results['truths']
+        del self.results['datetime indices']
 
-            for key, values in self.results.items():
-                if key in ["predictions", "truths", "datetime indices"]:
-                    forecast[key] = values
+        results_file_name = os.path.join(exp_dir, f"results_{date_time_str}.csv")
+        forecast_file_name = os.path.join(exp_dir, f"forecast_{date_time_str}.csv")
 
-            del self.results['predictions']
-            del self.results['truths']
-            del self.results['datetime indices']
+        results_df = pd.DataFrame(self.results)
+        forecast_df = pd.DataFrame(self.forecast)
 
-            results_file_name = os.path.join(exp_dir, f"results_{date_time_str}.csv")
-            forecast_file_name = os.path.join(exp_dir, f"forecast_{date_time_str}.csv")
+        results_df.to_csv(results_file_name, index=False)
+        forecast_df.to_csv(forecast_file_name, index=False)
 
-            results_df = pd.DataFrame(self.results)
-            forecast_df = pd.DataFrame(forecast)
+#------------------------------------------------------------------------
+# NOTE FOR HANDLING SEQUENTIAL DATA 
 
-            results_df.to_csv(results_file_name, index=False)
-            forecast_df.to_csv(forecast_file_name, index=False)
+# Sequential (Many-to-Many):
+# For a "sequential" or "many-to-many" approach where the input and output sequences are of equal length:
 
+# Inputs: Shape of (n, sequence_len, num_features) where n is the batch size, sequence_len is the number of timesteps per sample, and num_features is the number of features per timestep.
+# Labels/Outputs: Shape of (n, sequence_len, num_features) if predicting the same structure as the input. Often, the output might just predict a single feature, in which case it could be (n, sequence_len, 1).
+# Time Indices: Shape of (n, sequence_len) representing the time indices for each timestep in each sequence in the batch.
+
+# Many-to-One:
+# In a "many-to-one" setting:
+# Inputs: Shape of (n, s, k) aligns perfectly with your description where s is the sequence length and k is the number of features per timestep.
+# Outputs: Typically, the output for "many-to-one" would be (n, 1) or (n,) if predicting a single feature per sequence. If predicting multiple features (still one output per sequence), then (n, 1, k) or (n, k) might apply.
+# Time Indices for Inputs: Will be (n, s) as each input sequence will have its own time index.
+# Time Indices for Outputs: Typically, the time index will be (n,) since there's one output per sequence at a specific time point.
+
+# Fixed Window:
+# In "fixed window" forecasting:
+# Inputs: Shape (n, s, k) is correct.
+# Outputs: Shape (n, w, k) where w is the number of timesteps you want to predict into the future, and k is the number of features predicted per timestep.
+# Time Indices for Inputs: (n, s) since each input timestep has an associated time index.
+# Time Indices for Outputs: Ideally, (n, w) as each output timestep in the window will have its own time index.
+# Additional Points
+# Time Indices Alignment: It's crucial that the time_idx aligns correctly with both inputs and outputs. For training, particularly with neural networks, it's common to keep track of these indices separately and not input them into the neural network unless you're using them explicitly for conditional computations within the network architecture.
+# Consistency Across Batch: Ensure that all sequences within a batch are of uniform length unless using techniques like padding or masking to handle variable lengths, which is common in sequence models like RNNs, LSTMs, etc.
+# Shape Handling in PyTorch: When specifying shapes, remember that PyTorch typically does not need explicit single dimensions (e.g., (n, 1, k) could often just be (n, k)), unless the dimensionality is essential for operations like broadcasting.

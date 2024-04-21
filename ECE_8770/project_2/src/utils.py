@@ -49,7 +49,7 @@ def get_criterion(config: str):
 
 
 class ResultsPlotter:
-    def __init__(self, exp_dir, results, fold_idx=None, config=None):
+    def __init__(self, exp_dir, results, fold_idx=None, config=None, forecast_results = None):
         '''Args:
             exp_dir(string)- directory to export visualizations to
             results(dictionary)- a dict of results where keys are metrics and values are lists
@@ -57,6 +57,9 @@ class ResultsPlotter:
         self.exp_dir = exp_dir
         self.results: dict = results
         self.fold_idx = fold_idx
+
+        if forecast_results is not None:
+            self.forecast_results = forecast_results # dict{'predictions':[], 'truths':[], 'datetime indices':[]}
 
         # unpack config
         if config is not None:
@@ -135,6 +138,40 @@ class ResultsPlotter:
             fold_part = f"fold_{self.fold_idx}_" if self.fold_idx is not None else ""
             plt.savefig(os.path.join(self.exp_dir, f"{timestamp}_{fold_part}_regression_loss"))
 
+    def plot_forecast(self):
+        # convert forecast results to dataframe
+        forecast_df = pd.DataFrame(self.forecast_results)
+
+        # convert datetime indices to pd.Datetime
+        forecast_df['datetime indices'] = pd.to_datetime(forecast_df['datetime indices'])
+        
+        # sort dataframe by date
+        forecast_df = forecast_df.sort_values('datetime indices')
+
+        plt.figure()
+
+        plt.plot(forecast_df['datetime indices'], forecast_df['predictions'], label='prediction')
+        plt.plot(forecast_df['datetime indices'], forecast_df['truths'], label='truth')
+
+        # Format the x-axis to display dates nicely
+        plt.gcf().autofmt_xdate()  # Auto formats the x-axis labels to fit better
+        plt.gca().xaxis.set_major_formatter(plt.matplotlib.dates.DateFormatter('%m-%d-%Y'))  # Optional: sets date format
+
+        plt.legend()
+        plt.title("Predictions vs Truths")
+        plt.xlabel("Date")
+
+        # Adding configuration details below the plot
+        plt.figtext(0.5, 0.01, self.format_config_details(), ha="center", fontsize=9, wrap=True)
+        plt.subplots_adjust(bottom=0.2)
+        # plt.tight_layout(rect=[0, 0.05, 1, 1]) # Adjust layout to make room for text
+
+        # save fig
+        now = datetime.now()
+        timestamp = now.strftime("%Y-%m-%d_%H-%M-%S")
+        fold_part = f"fold_{self.fold_idx}_" if self.fold_idx is not None else ""
+        plt.savefig(os.path.join(self.exp_dir, f"{timestamp}_{fold_part}_forecast"))
+        
     def plot_from_csv(self):
          pass
     
