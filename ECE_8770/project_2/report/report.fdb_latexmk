@@ -1,12 +1,12 @@
 # Fdb version 4
-["biber report"] 1713753311.14153 "report.bcf" "report.bbl" "report" 1713757079.73321 0
-  "references.bib" 1713745974 306 57416abb432f89c546ec3e08ef5ad527 ""
-  "report.bcf" 1713757079 107973 d2414db82d3fe4844e0d2481436c1cad "pdflatex"
+["biber report"] 1713801829.10359 "report.bcf" "report.bbl" "report" 1713803346.60395 0
+  "references.bib" 1713801800 562 4eeb1626dee3849fa181ba1ad30d2a9b ""
+  "report.bcf" 1713803346 108115 41586ded5b8c9a1b634f04b177001dfe "pdflatex"
   (generated)
   "report.bbl"
   "report.blg"
   (rewritten before read)
-["pdflatex"] 1713757077.38548 "c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/report/report.tex" "report.pdf" "report" 1713757079.73421 0
+["pdflatex"] 1713803343.79915 "c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/report/report.tex" "report.pdf" "report" 1713803346.60517 0
   "C:/Users/Zayan/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1713733708 81088 29d6fa367ac022d1b69251d68c0742e6 ""
   "C:/Users/Zayan/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1706998271 24225045 749a393689d4ba5129a20139050bf5a8 ""
   "C:/Users/Zayan/AppData/Local/Programs/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1233951848 1004 54797486969f23fa377b128694d548df ""
@@ -111,15 +111,16 @@
   "C:/Users/Zayan/AppData/Local/Programs/MiKTeX/tex/latex/tools/array.sty" 1700599895 12667 e4b5eb11e4b7239e6c8a52bbe074a6c6 ""
   "C:/Users/Zayan/AppData/Local/Programs/MiKTeX/tex/latex/tools/longtable.sty" 1700599895 12935 94a3291359b5f73ff1b19345a6983105 ""
   "C:/Users/Zayan/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
-  "c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/report/report.tex" 1713757075 5765 61b5eeb7a9dccbf75942f38c4ecfb676 ""
+  "c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/report/report.tex" 1713803342 8265 e5e77ab049e3d40366346cf730dac2cc ""
   "figs/d2l_ai_rnn_v1.png" 1713733824 24660 f5442ba81ae17d9ac92996181bb8cfe1 ""
   "figs/d2l_ai_rnn_v2.png" 1713753066 21443 ae2de14e05af3c0299a12b6b58390a02 ""
   "figs/lstms v1.png" 1713754809 33366 a2e968405f464ff4e2ae8c231ff6da52 ""
-  "report.aux" 1713757079 2981 236a7f0efb2bdaccddd6a6eb7e687b6a "pdflatex"
-  "report.bbl" 1713753313 2308 4bd1361cb81a4c921a591743cd734b0c "biber report"
-  "report.out" 1713757079 955 dd16054c7fb8f96fe37e8c72772730c3 "pdflatex"
-  "report.run.xml" 1713757079 2319 1dbeae9c91c70510d621aca3b4772e83 "pdflatex"
-  "report.tex" 1713757075 5765 61b5eeb7a9dccbf75942f38c4ecfb676 ""
+  "figs/techniques for truncated bptt.png" 1713800625 3654 886f7878036544486f6c2cfcb30c3e2c ""
+  "report.aux" 1713803346 4350 febe46219d323b3785d9c3b9eb7b5183 "pdflatex"
+  "report.bbl" 1713801832 3543 c3fc5030a843cfc07c4cd66c2eab1478 "biber report"
+  "report.out" 1713803346 1434 f1e1fed96e2301f62dd43d8829c1f3e0 "pdflatex"
+  "report.run.xml" 1713803346 2319 1dbeae9c91c70510d621aca3b4772e83 "pdflatex"
+  "report.tex" 1713803342 8265 e5e77ab049e3d40366346cf730dac2cc ""
   "title.tex" 1713732324 452 b9abd75cd616f047f9321b66c9f54e23 ""
   (generated)
   "report.aux"

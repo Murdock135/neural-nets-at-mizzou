@@ -19,6 +19,37 @@
 
 \refsection{0}
   \datalist[entry]{nty/global//global/global}
+    \entry{tallec2017unbiasing}{misc}{}
+      \name{author}{2}{}{%
+        {{hash=53e127de75e9241aa5b25e378a90fea1}{%
+           family={Tallec},
+           familyi={T\bibinitperiod},
+           given={Corentin},
+           giveni={C\bibinitperiod}}}%
+        {{hash=2787d1663a0b8e14480abceab7c7751a}{%
+           family={Ollivier},
+           familyi={O\bibinitperiod},
+           given={Yann},
+           giveni={Y\bibinitperiod}}}%
+      }
+      \strng{namehash}{8edc800a74c0cbb4ff80e9d3758ea53c}
+      \strng{fullhash}{8edc800a74c0cbb4ff80e9d3758ea53c}
+      \strng{bibnamehash}{8edc800a74c0cbb4ff80e9d3758ea53c}
+      \strng{authorbibnamehash}{8edc800a74c0cbb4ff80e9d3758ea53c}
+      \strng{authornamehash}{8edc800a74c0cbb4ff80e9d3758ea53c}
+      \strng{authorfullhash}{8edc800a74c0cbb4ff80e9d3758ea53c}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{cs.NE}
+      \field{eprinttype}{arXiv}
+      \field{title}{Unbiasing Truncated Backpropagation Through Time}
+      \field{year}{2017}
+      \verb{eprint}
+      \verb 1705.08209
+      \endverb
+    \endentry
     \entry{zhang2023dive}{book}{}
       \name{author}{4}{}{%
         {{hash=983273ab2d972b56d8b64d220726b6aa}{%

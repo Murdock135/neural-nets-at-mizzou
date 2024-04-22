@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.2.3)  21 APR 2024 22:37
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.2.3)  22 APR 2024 11:29
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -625,31 +625,41 @@ Package biblatex Info: Reference segment=0 on input line 27.
 
 {C:/Users/Zayan/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}])
 
-LaTeX Warning: Reference `rnns v2' on page 1 undefined on input line 58.
+LaTeX Warning: Reference `rnns v2' on page 1 undefined on input line 60.
 
-<./figs/d2l_ai_rnn_v1.png, id=28, 524.71031pt x 180.675pt>
+<./figs/d2l_ai_rnn_v1.png, id=41, 524.71031pt x 180.675pt>
 File: ./figs/d2l_ai_rnn_v1.png Graphic file (type png)
 <use ./figs/d2l_ai_rnn_v1.png>
-Package pdftex.def Info: ./figs/d2l_ai_rnn_v1.png  used on input line 63.
+Package pdftex.def Info: ./figs/d2l_ai_rnn_v1.png  used on input line 65.
 (pdftex.def)             Requested size: 375.80544pt x 129.40494pt.
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.74 
-      [1 <./figs/d2l_ai_rnn_v1.png>]
-<./figs/d2l_ai_rnn_v2.png, id=44, 419.76825pt x 184.89075pt>
+l.85 \end{equation}
+                    [1]
+<./figs/d2l_ai_rnn_v2.png, id=59, 419.76825pt x 184.89075pt>
 File: ./figs/d2l_ai_rnn_v2.png Graphic file (type png)
 <use ./figs/d2l_ai_rnn_v2.png>
-Package pdftex.def Info: ./figs/d2l_ai_rnn_v2.png  used on input line 99.
+Package pdftex.def Info: ./figs/d2l_ai_rnn_v2.png  used on input line 101.
 (pdftex.def)             Requested size: 375.80544pt x 165.53117pt.
- [2 <./figs/d2l_ai_rnn_v2.png>]
-<./figs/lstms v1.png, id=57, 567.92175pt x 287.27325pt>
+ [2 <./figs/d2l_ai_rnn_v1.png>] [3 <./figs/d2l_ai_rnn_v2.png>]
+<./figs/techniques for truncated bptt.png, id=87, 298.11375pt x 64.74188pt>
+File: ./figs/techniques for truncated bptt.png Graphic file (type png)
+<use ./figs/techniques for truncated bptt.png>
+Package pdftex.def Info: ./figs/techniques for truncated bptt.png  used on input line 148.
+(pdftex.def)             Requested size: 375.80544pt x 81.61865pt.
+<./figs/lstms v1.png, id=88, 567.92175pt x 287.27325pt>
 File: ./figs/lstms v1.png Graphic file (type png)
 <use ./figs/lstms v1.png>
-Package pdftex.def Info: ./figs/lstms v1.png  used on input line 127.
+Package pdftex.def Info: ./figs/lstms v1.png  used on input line 157.
 (pdftex.def)             Requested size: 375.80544pt x 190.09625pt.
- [3 <./figs/lstms v1.png>] (report.aux)
+
+Overfull \hbox (0.26984pt too wide) in paragraph at lines 176--176
+[]\OT1/cmr/m/n/12 Corentin Tal-lec and Yann Ol-livier. \OT1/cmr/m/it/12 Un-bi-as-ing Trun-cated Back-prop-a-ga-tion Through Time\OT1/cmr/m/n/12 .
+ []
+
+[4 <./figs/techniques for truncated bptt.png> <./figs/lstms v1.png>] [5] (report.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
@@ -659,23 +669,23 @@ L3 programming layer <2024-01-04>
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: DD16054C7FB8F96FE37E8C72772730C3;955.
+(rerunfilecheck)             Checksum: F1E1FED96E2301F62DD43D8829C1F3E0;1434.
 Package logreq Info: Writing requests to 'report.run.xml'.
 \openout1 = `report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 18577 strings out of 474486
- 330048 string characters out of 5743756
- 1933542 words of memory out of 5000000
- 40661 multiletter control sequences out of 15000+600000
+ 18607 strings out of 474486
+ 330886 string characters out of 5743756
+ 1937542 words of memory out of 5000000
+ 40681 multiletter control sequences out of 15000+600000
  564159 words of font info for 57 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,9n,81p,762b,1541s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Zayan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Zayan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Zayan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/Zayan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Zayan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Zayan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/Zayan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Zayan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/Zayan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/Zayan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/Zayan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on report.pdf (4 pages, 206350 bytes).
+Output written on report.pdf (6 pages, 225964 bytes).
 PDF statistics:
- 123 PDF objects out of 1000 (max. 8388607)
- 18 named destinations out of 1000 (max. 500000)
- 48 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 159 PDF objects out of 1000 (max. 8388607)
+ 28 named destinations out of 1000 (max. 500000)
+ 77 words of extra memory for PDF output out of 10000 (max. 10000000)
 

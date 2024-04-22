@@ -192,7 +192,7 @@ INPUT C:\Users\Zayan\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr17.tfm
 INPUT C:\Users\Zayan\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx12.tfm
 INPUT C:\Users\Zayan\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr12.tfm
 INPUT C:\Users\Zayan\AppData\Local\MiKTeX\fonts\map\pdftex\pdftex.map
-INPUT C:\Users\Zayan\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx12.tfm
+INPUT C:\Users\Zayan\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmtt12.tfm
 INPUT C:\Users\Zayan\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr8.tfm
 INPUT C:\Users\Zayan\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr6.tfm
 INPUT C:\Users\Zayan\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmmi12.tfm
@@ -204,6 +204,7 @@ INPUT C:\Users\Zayan\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmsy6.tfm
 INPUT C:\Users\Zayan\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmex10.tfm
 INPUT C:\Users\Zayan\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex8.tfm
 INPUT C:\Users\Zayan\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex7.tfm
+INPUT C:\Users\Zayan\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx12.tfm
 INPUT C:\Users\Zayan\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmti12.tfm
 INPUT C:\Users\Zayan\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx12.tfm
 INPUT .\figs\d2l_ai_rnn_v1.png
@@ -220,13 +221,18 @@ INPUT .\figs\d2l_ai_rnn_v2.png
 INPUT .\figs\d2l_ai_rnn_v2.png
 INPUT .\figs\d2l_ai_rnn_v2.png
 INPUT .\figs\d2l_ai_rnn_v2.png
+INPUT .\figs\techniques for truncated bptt.png
+INPUT .\figs\techniques for truncated bptt.png
+INPUT .\figs\techniques for truncated bptt.png
+INPUT .\figs\techniques for truncated bptt.png
+INPUT .\figs\techniques for truncated bptt.png
+INPUT .\figs\techniques for truncated bptt.png
 INPUT .\figs\lstms v1.png
 INPUT .\figs\lstms v1.png
 INPUT .\figs\lstms v1.png
 INPUT .\figs\lstms v1.png
 INPUT .\figs\lstms v1.png
 INPUT .\figs\lstms v1.png
-INPUT C:\Users\Zayan\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmtt12.tfm
 INPUT report.aux
 INPUT .\report.out
 INPUT .\report.out
