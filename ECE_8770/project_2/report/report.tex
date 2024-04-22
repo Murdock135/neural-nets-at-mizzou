@@ -48,15 +48,87 @@ Recurrent Neural Networks are neural neural networks that store the
 hidden layer's output at the current time step so that it can influence
 the output of the hidden layer at the next time step. Qualitatively,
 this is commonly thought of as information being passed to the next time
-step. 
+step. Figure \ref{fig: rnns v1} shows this in two forms. On the left the 
+rnn is said to be in "rolled"(in time) form whereas on the right is is said to be 
+in "unrolled"(in time) form. The figure tells us that the rnn can be seen as a "feedback"
+network of sorts where the output of the hidden layer $h_t$ is passed back to the hidden layer.
+The left picture fails to capture that $h_t$ is passed to the next time step. The unrolled 
+version captures this well. On the other hand, the rolled version captures a very crucial 
+fact; that throughout the hidden layers at different time steps, \textit{there is only 
+one weight matrix}, shared throughout the entire RNN at all time steps. Figure \ref{rnns v2} explicitly
+illustrates this.
 
 \begin{figure}[htpb]
     \centering
     \includegraphics[width=0.8\textwidth]{d2l_ai_rnn_v1.png}
-    \caption{Fig 1: On the left recurrent connections are depicted via cyclic edges. 
+    \caption{Fig 1: \cite{zhang2023dive}: On the left recurrent connections are depicted via cyclic edges. 
     On the right, we unfold the RNN over time steps. Here, recurrent edges span 
     adjacent time steps, while conventional connections are computed synchronously}
+    \label{fig: rnns v1}
 \end{figure}
+
+The shaded blue boxes are each a Multi-layer perceptron. The only caveat here is that in addition to the
+inputs of the "current time step" $x_t$, it also recieves \textit{as} input, the weighted outputs of 
+the previous hidden layer $h_{t-1}$. Thus, the input to the current hidden layer is expressed as a 
+concatenation $[h_{t-1};\;x_t]$. Thus the equations defining the RNN are,
+
+\begin{align}
+    h_t = \phi(W_{hh} h_{t-1} + W_{xh} x_t + b_h)
+    \label{eqn: h_t rnn}
+\end{align}
+
+\begin{equation}
+    o_t = W_o h_t + b_o
+    \label{eqn: o_t rnn}
+\end{equation}
+
+Where in equation \ref{eqn: h_t rnn}, $W_{hh}$ indicates \textbf{the weights going from the hidden layer at the previous time step to the 
+hidden layer at the current time step}, $W_{xh}$ indicates \textbf{the weights going from the current 
+inputs to the current hidden layer.} In equation \ref{eqn: o_t rnn} $W_o$ indicates \textbf{the weights going from
+the hidden layer at the current time step to the output layer of the current time step.}
+
+With these equations, the learning rule the RNN can be derived for any optimization algorithm e.g.
+stochastic gradient descent, adaptive momentum, RMS prop, etc. The algorithms won't be discussed in 
+this report but the gradients of the error wrt the learnable parameters are mentioned
+in the next section, \textbf{backpropagation through time}.
+
+\subsubsection{Backpropagation through time (Backpropagation for RNNs)}
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.8\textwidth]{d2l_ai_rnn_v2.png}
+    \caption{Fig 2: \cite{zhang2023dive}: Computational graph showing dependencies for an RNN model 
+    with three time steps. Boxes represent variables (not shaded) or parameters (shaded) and circles 
+    represent operators.}
+    \label{fig: rnns v2}
+\end{figure}
+
+
+For an RNN, the total loss is expressed as,
+
+\begin{equation}
+    \hat{L} = \frac{1}{T} \sum_{t=1}^{T} \ell(y_t, d_t) = \frac{1}{T} (l_1 + l_2 + ... + l_t ... + l_T)
+    \label{eqn: total loss rnn}
+\end{equation}
+
+Where the small $l_t$'s indicate loss at a particular time step. The gradients of this total loss with respect
+to the learnable parameters are, 
+
+\begin{align}
+    \frac{\partial h_t}{\partial w_h} &= \frac{\partial h_t}{\partial w_h} + \sum_{i=1}^{t-1}\prod_{j-1=i}^{t} (\frac{\partial h_j}{\partial h_{j-1}}) \frac{\partial h_i}{\partial w_h}\\
+    \frac{\partial L}{\partial W_{oh}} &= \sum_{t}^{T} \frac{\partial L}{\partial o_t} h_t
+\end{align}
+
+\subsection{Long Short Term Memory nets (LSTMs)}
+
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.8\textwidth]{lstms v1.png}
+    \caption{lstms}
+    \label{fig: lstms}
+\end{figure}
+
 
 \printbibliography
 

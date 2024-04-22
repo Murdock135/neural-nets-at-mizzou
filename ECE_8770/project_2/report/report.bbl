@@ -16,5 +16,51 @@
   {}
 \endgroup
 
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{zhang2023dive}{book}{}
+      \name{author}{4}{}{%
+        {{hash=983273ab2d972b56d8b64d220726b6aa}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Aston},
+           giveni={A\bibinitperiod}}}%
+        {{hash=599ae457cf41d4ce64e09433edbc964b}{%
+           family={Lipton},
+           familyi={L\bibinitperiod},
+           given={Zachary\bibnamedelima C.},
+           giveni={Z\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=c4a02f87e51fc72ab3f841de1a3982a7}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Mu},
+           giveni={M\bibinitperiod}}}%
+        {{hash=82d61e31b4f7f82ad59ff887349bdfe3}{%
+           family={Smola},
+           familyi={S\bibinitperiod},
+           given={Alexander\bibnamedelima J.},
+           giveni={A\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{7174309e70e2a2bac293d53405348f6b}
+      \strng{fullhash}{6bbccfc10d5cec4da080438a1099af8b}
+      \strng{bibnamehash}{7174309e70e2a2bac293d53405348f6b}
+      \strng{authorbibnamehash}{7174309e70e2a2bac293d53405348f6b}
+      \strng{authornamehash}{7174309e70e2a2bac293d53405348f6b}
+      \strng{authorfullhash}{6bbccfc10d5cec4da080438a1099af8b}
+      \field{sortinit}{Z}
+      \field{sortinithash}{96892c0b0a36bb8557c40c49813d48b3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{chapter}{9}
+      \field{note}{\url{https://d2l.ai/chapter_recurrent-neural-networks/index.html}}
+      \field{title}{Dive into Deep Learning}
+      \field{year}{2023}
+    \endentry
+  \enddatalist
+\endrefsection
 \endinput
 
