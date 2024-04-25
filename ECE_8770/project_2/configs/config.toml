@@ -7,9 +7,9 @@ data_path = "c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/p
 
 [training]
 batch_size = 32
-epochs = 10
+epochs = 100
 training_portion = 0.8
-optimizer = {type = "Adam", learning_rate = 0.001}
+optimizer = {type = "sgd", learning_rate = 0.001}
 criterion = "MSE"
 
   [training.k_fold]
@@ -20,8 +20,8 @@ criterion = "MSE"
 type = 'rnn' # Type ('rnn', 'gru', 'lstm')
 num_layers = 1
 hidden_size = 512
-sequence_length = 1
-future_strategy = "sequential" # options: ['many_to_one', 'sequential', 'fixed_window']
+sequence_length = 20
+future_strategy = "many_to_one" # options: ['many_to_one', 'sequential', 'fixed_window']
 prediction_window = 4 # Number of time steps to predict (only applied if future_strategy == 'fixed_window')
 
 [output]

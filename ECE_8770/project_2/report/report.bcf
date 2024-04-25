@@ -2367,6 +2367,9 @@
     <bcf:citekey order="4" intorder="1">zhang2023dive</bcf:citekey>
     <bcf:citekey order="5" intorder="1">zhang2023dive</bcf:citekey>
     <bcf:citekey order="6" intorder="1">tallec2017unbiasing</bcf:citekey>
+    <bcf:citekey order="7" intorder="1">zhang2023dive</bcf:citekey>
+    <bcf:citekey order="8" intorder="1">multivariate_chain_rule</bcf:citekey>
+    <bcf:citekey order="9" intorder="1">d2l_bptt</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">

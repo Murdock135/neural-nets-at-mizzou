@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.2.3)  22 APR 2024 11:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.2.3)  24 APR 2024 22:04
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -623,43 +623,190 @@ Package biblatex Info: Reference segment=0 on input line 27.
 
 (title.tex [1
 
-{C:/Users/Zayan/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}])
+{C:/Users/Zayan/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]) (report.toc)
+\tf@toc=\write5
+\openout5 = `report.toc'.
 
-LaTeX Warning: Reference `rnns v2' on page 1 undefined on input line 60.
 
-<./figs/d2l_ai_rnn_v1.png, id=41, 524.71031pt x 180.675pt>
-File: ./figs/d2l_ai_rnn_v1.png Graphic file (type png)
-<use ./figs/d2l_ai_rnn_v1.png>
-Package pdftex.def Info: ./figs/d2l_ai_rnn_v1.png  used on input line 65.
-(pdftex.def)             Requested size: 375.80544pt x 129.40494pt.
+
+LaTeX Warning: Reference `fig: rnns v2S' on page 1 undefined on input line 61.
+
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.85 \end{equation}
-                    [1]
-<./figs/d2l_ai_rnn_v2.png, id=59, 419.76825pt x 184.89075pt>
+l.63 
+      [1]
+<./figs/d2l_ai_rnn_v1.png, id=72, 524.71031pt x 180.675pt>
+File: ./figs/d2l_ai_rnn_v1.png Graphic file (type png)
+<use ./figs/d2l_ai_rnn_v1.png>
+Package pdftex.def Info: ./figs/d2l_ai_rnn_v1.png  used on input line 66.
+(pdftex.def)             Requested size: 375.80544pt x 129.40494pt.
+ [2 <./figs/d2l_ai_rnn_v1.png>]
+<./figs/d2l_ai_rnn_v2.png, id=92, 419.76825pt x 184.89075pt>
 File: ./figs/d2l_ai_rnn_v2.png Graphic file (type png)
 <use ./figs/d2l_ai_rnn_v2.png>
-Package pdftex.def Info: ./figs/d2l_ai_rnn_v2.png  used on input line 101.
+Package pdftex.def Info: ./figs/d2l_ai_rnn_v2.png  used on input line 102.
 (pdftex.def)             Requested size: 375.80544pt x 165.53117pt.
- [2 <./figs/d2l_ai_rnn_v1.png>] [3 <./figs/d2l_ai_rnn_v2.png>]
-<./figs/techniques for truncated bptt.png, id=87, 298.11375pt x 64.74188pt>
+ [3 <./figs/d2l_ai_rnn_v2.png>]
+<./figs/techniques for truncated bptt.png, id=111, 298.11375pt x 64.74188pt>
 File: ./figs/techniques for truncated bptt.png Graphic file (type png)
 <use ./figs/techniques for truncated bptt.png>
-Package pdftex.def Info: ./figs/techniques for truncated bptt.png  used on input line 148.
+Package pdftex.def Info: ./figs/techniques for truncated bptt.png  used on input line 149.
 (pdftex.def)             Requested size: 375.80544pt x 81.61865pt.
-<./figs/lstms v1.png, id=88, 567.92175pt x 287.27325pt>
+<./figs/lstms v1.png, id=112, 567.92175pt x 287.27325pt>
 File: ./figs/lstms v1.png Graphic file (type png)
 <use ./figs/lstms v1.png>
-Package pdftex.def Info: ./figs/lstms v1.png  used on input line 157.
+Package pdftex.def Info: ./figs/lstms v1.png  used on input line 158.
 (pdftex.def)             Requested size: 375.80544pt x 190.09625pt.
+ [4 <./figs/techniques for truncated bptt.png>] [5 <./figs/lstms v1.png>]
+<./figs/rnn configurations.jpeg, id=136, 1333.98375pt x 417.56pt>
+File: ./figs/rnn configurations.jpeg Graphic file (type jpg)
+<use ./figs/rnn configurations.jpeg>
+Package pdftex.def Info: ./figs/rnn configurations.jpeg  used on input line 211.
+(pdftex.def)             Requested size: 375.80544pt x 117.6296pt.
+ [6 <./figs/rnn configurations.jpeg>]
+Overfull \hbox (186.80205pt too wide) in paragraph at lines 244--249
+[]\OT1/cmr/m/n/12 The model was trained on stock price dataset and can be found here https://www.kaggle.com/datasets/vijayvvenkitesh/microsoft-
+ []
 
-Overfull \hbox (0.26984pt too wide) in paragraph at lines 176--176
+
+LaTeX Warning: Reference `Validation loss of all models after training' on page 7 undefined on input line 277.
+
+[7]
+<c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-34-00__rnn_3_sequential_sgd_[0.001]_forecast.jpg, id=169, 462.528pt x 346.896pt>
+File: c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-34-00__rnn_3_sequential_sgd_[0.001]_forecast.jpg Graphic file (type jpg)
+<use c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-34-00__rnn_3_sequential_sgd_[0.001]_forecast.jpg>
+Package pdftex.def Info: c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-34-00__rnn_3_sequential_sgd_[0.001]_forecast.jpg  used on input line 290.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+<c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-34-35__rnn_7_sequential_sgd_[0.001]_forecast.jpg, id=170, 462.528pt x 346.896pt>
+File: c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-34-35__rnn_7_sequential_sgd_[0.001]_forecast.jpg Graphic file (type jpg)
+<use c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-34-35__rnn_7_sequential_sgd_[0.001]_forecast.jpg>
+Package pdftex.def Info: c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-34-35__rnn_7_sequential_sgd_[0.001]_forecast.jpg  used on input line 293.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+<c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-35-30__rnn_50_sequential_sgd_[0.001]_forecast.jpg, id=171, 462.528pt x 346.896pt>
+File: c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-35-30__rnn_50_sequential_sgd_[0.001]_forecast.jpg Graphic file (type jpg)
+<use c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-35-30__rnn_50_sequential_sgd_[0.001]_forecast.jpg>
+Package pdftex.def Info: c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-35-30__rnn_50_sequential_sgd_[0.001]_forecast.jpg  used on input line 296.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+<c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-37-51__lstm_3_sequential_sgd_[0.001]_forecast.jpg, id=172, 462.528pt x 346.896pt>
+File: c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-37-51__lstm_3_sequential_sgd_[0.001]_forecast.jpg Graphic file (type jpg)
+<use c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-37-51__lstm_3_sequential_sgd_[0.001]_forecast.jpg>
+Package pdftex.def Info: c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-37-51__lstm_3_sequential_sgd_[0.001]_forecast.jpg  used on input line 306.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+<c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-38-24__lstm_7_sequential_sgd_[0.001]_forecast.jpg, id=173, 462.528pt x 346.896pt>
+File: c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-38-24__lstm_7_sequential_sgd_[0.001]_forecast.jpg Graphic file (type jpg)
+<use c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-38-24__lstm_7_sequential_sgd_[0.001]_forecast.jpg>
+Package pdftex.def Info: c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-38-24__lstm_7_sequential_sgd_[0.001]_forecast.jpg  used on input line 309.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+<c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-39-23__lstm_50_sequential_sgd_[0.001]_forecast.jpg, id=174, 462.528pt x 346.896pt>
+File: c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-39-23__lstm_50_sequential_sgd_[0.001]_forecast.jpg Graphic file (type jpg)
+<use c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-39-23__lstm_50_sequential_sgd_[0.001]_forecast.jpg>
+Package pdftex.def Info: c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-39-23__lstm_50_sequential_sgd_[0.001]_forecast.jpg  used on input line 312.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+<c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-34-15__rnn_3_many_to_one_sgd_[0.001]_forecast.jpg, id=175, 462.528pt x 346.896pt>
+File: c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-34-15__rnn_3_many_to_one_sgd_[0.001]_forecast.jpg Graphic file (type jpg)
+<use c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-34-15__rnn_3_many_to_one_sgd_[0.001]_forecast.jpg>
+Package pdftex.def Info: c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-34-15__rnn_3_many_to_one_sgd_[0.001]_forecast.jpg  used on input line 322.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+<c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-34-51__rnn_7_many_to_one_sgd_[0.001]_forecast.jpg, id=176, 462.528pt x 346.896pt>
+File: c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-34-51__rnn_7_many_to_one_sgd_[0.001]_forecast.jpg Graphic file (type jpg)
+<use c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-34-51__rnn_7_many_to_one_sgd_[0.001]_forecast.jpg>
+Package pdftex.def Info: c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-34-51__rnn_7_many_to_one_sgd_[0.001]_forecast.jpg  used on input line 325.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+<c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-35-57__rnn_50_many_to_one_sgd_[0.001]_forecast.jpg, id=177, 462.528pt x 346.896pt>
+File: c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-35-57__rnn_50_many_to_one_sgd_[0.001]_forecast.jpg Graphic file (type jpg)
+<use c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-35-57__rnn_50_many_to_one_sgd_[0.001]_forecast.jpg>
+Package pdftex.def Info: c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-35-57__rnn_50_many_to_one_sgd_[0.001]_forecast.jpg  used on input line 328.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+<c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-38-05__lstm_3_many_to_one_sgd_[0.001]_forecast.jpg, id=178, 462.528pt x 346.896pt>
+File: c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-38-05__lstm_3_many_to_one_sgd_[0.001]_forecast.jpg Graphic file (type jpg)
+<use c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-38-05__lstm_3_many_to_one_sgd_[0.001]_forecast.jpg>
+Package pdftex.def Info: c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-38-05__lstm_3_many_to_one_sgd_[0.001]_forecast.jpg  used on input line 338.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+<c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-38-39__lstm_7_many_to_one_sgd_[0.001]_forecast.jpg, id=179, 462.528pt x 346.896pt>
+File: c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-38-39__lstm_7_many_to_one_sgd_[0.001]_forecast.jpg Graphic file (type jpg)
+<use c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-38-39__lstm_7_many_to_one_sgd_[0.001]_forecast.jpg>
+Package pdftex.def Info: c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-38-39__lstm_7_many_to_one_sgd_[0.001]_forecast.jpg  used on input line 341.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+<c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-39-57__lstm_50_many_to_one_sgd_[0.001]_forecast.jpg, id=180, 462.528pt x 346.896pt>
+File: c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-39-57__lstm_50_many_to_one_sgd_[0.001]_forecast.jpg Graphic file (type jpg)
+<use c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-39-57__lstm_50_many_to_one_sgd_[0.001]_forecast.jpg>
+Package pdftex.def Info: c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-39-57__lstm_50_many_to_one_sgd_[0.001]_forecast.jpg  used on input line 344.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+<c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-33-44__rnn_3_sequential_adam_[0.001]_forecast.jpg, id=181, 462.528pt x 346.896pt>
+File: c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-33-44__rnn_3_sequential_adam_[0.001]_forecast.jpg Graphic file (type jpg)
+<use c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-33-44__rnn_3_sequential_adam_[0.001]_forecast.jpg>
+Package pdftex.def Info: c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-33-44__rnn_3_sequential_adam_[0.001]_forecast.jpg  used on input line 355.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+<c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-34-18__rnn_7_sequential_adam_[0.001]_forecast.jpg, id=182, 462.528pt x 346.896pt>
+File: c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-34-18__rnn_7_sequential_adam_[0.001]_forecast.jpg Graphic file (type jpg)
+<use c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-34-18__rnn_7_sequential_adam_[0.001]_forecast.jpg>
+Package pdftex.def Info: c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-34-18__rnn_7_sequential_adam_[0.001]_forecast.jpg  used on input line 358.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+<c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-34-57__rnn_50_sequential_adam_[0.001]_forecast.jpg, id=183, 462.528pt x 346.896pt>
+File: c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-34-57__rnn_50_sequential_adam_[0.001]_forecast.jpg Graphic file (type jpg)
+<use c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-34-57__rnn_50_sequential_adam_[0.001]_forecast.jpg>
+Package pdftex.def Info: c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-34-57__rnn_50_sequential_adam_[0.001]_forecast.jpg  used on input line 361.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+<c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-33-46__rnn_3_many_to_one_adam_[0.001]_forecast.jpg, id=184, 462.528pt x 346.896pt>
+File: c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-33-46__rnn_3_many_to_one_adam_[0.001]_forecast.jpg Graphic file (type jpg)
+<use c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-33-46__rnn_3_many_to_one_adam_[0.001]_forecast.jpg>
+Package pdftex.def Info: c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-33-46__rnn_3_many_to_one_adam_[0.001]_forecast.jpg  used on input line 371.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+<c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-34-20__rnn_7_many_to_one_adam_[0.001]_forecast.jpg, id=185, 462.528pt x 346.896pt>
+File: c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-34-20__rnn_7_many_to_one_adam_[0.001]_forecast.jpg Graphic file (type jpg)
+<use c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-34-20__rnn_7_many_to_one_adam_[0.001]_forecast.jpg>
+Package pdftex.def Info: c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-34-20__rnn_7_many_to_one_adam_[0.001]_forecast.jpg  used on input line 374.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+<c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-35-00__rnn_50_many_to_one_adam_[0.001]_forecast.jpg, id=186, 462.528pt x 346.896pt>
+File: c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-35-00__rnn_50_many_to_one_adam_[0.001]_forecast.jpg Graphic file (type jpg)
+<use c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-35-00__rnn_50_many_to_one_adam_[0.001]_forecast.jpg>
+Package pdftex.def Info: c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-35-00__rnn_50_many_to_one_adam_[0.001]_forecast.jpg  used on input line 377.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+<c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-37-35__lstm_3_sequential_adam_[0.001]_forecast.jpg, id=187, 462.528pt x 346.896pt>
+File: c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-37-35__lstm_3_sequential_adam_[0.001]_forecast.jpg Graphic file (type jpg)
+<use c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-37-35__lstm_3_sequential_adam_[0.001]_forecast.jpg>
+Package pdftex.def Info: c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-37-35__lstm_3_sequential_adam_[0.001]_forecast.jpg  used on input line 387.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+<c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-38-08__lstm_7_sequential_adam_[0.001]_forecast.jpg, id=188, 462.528pt x 346.896pt>
+File: c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-38-08__lstm_7_sequential_adam_[0.001]_forecast.jpg Graphic file (type jpg)
+<use c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-38-08__lstm_7_sequential_adam_[0.001]_forecast.jpg>
+Package pdftex.def Info: c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-38-08__lstm_7_sequential_adam_[0.001]_forecast.jpg  used on input line 390.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+<c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-38-45__lstm_50_sequential_adam_[0.001]_forecast.jpg, id=189, 462.528pt x 346.896pt>
+File: c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-38-45__lstm_50_sequential_adam_[0.001]_forecast.jpg Graphic file (type jpg)
+<use c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-38-45__lstm_50_sequential_adam_[0.001]_forecast.jpg>
+Package pdftex.def Info: c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-38-45__lstm_50_sequential_adam_[0.001]_forecast.jpg  used on input line 393.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+<c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-37-37__lstm_3_many_to_one_adam_[0.001]_forecast.jpg, id=190, 462.528pt x 346.896pt>
+File: c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-37-37__lstm_3_many_to_one_adam_[0.001]_forecast.jpg Graphic file (type jpg)
+<use c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-37-37__lstm_3_many_to_one_adam_[0.001]_forecast.jpg>
+Package pdftex.def Info: c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-37-37__lstm_3_many_to_one_adam_[0.001]_forecast.jpg  used on input line 403.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+<c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-38-10__lstm_7_many_to_one_adam_[0.001]_forecast.jpg, id=191, 462.528pt x 346.896pt>
+File: c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-38-10__lstm_7_many_to_one_adam_[0.001]_forecast.jpg Graphic file (type jpg)
+<use c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-38-10__lstm_7_many_to_one_adam_[0.001]_forecast.jpg>
+Package pdftex.def Info: c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-38-10__lstm_7_many_to_one_adam_[0.001]_forecast.jpg  used on input line 406.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+<c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-38-49__lstm_50_many_to_one_adam_[0.001]_forecast.jpg, id=192, 462.528pt x 346.896pt>
+File: c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-38-49__lstm_50_many_to_one_adam_[0.001]_forecast.jpg Graphic file (type jpg)
+<use c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-38-49__lstm_50_many_to_one_adam_[0.001]_forecast.jpg>
+Package pdftex.def Info: c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-38-49__lstm_50_many_to_one_adam_[0.001]_forecast.jpg  used on input line 409.
+(pdftex.def)             Requested size: 140.92793pt x 105.69461pt.
+<c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/results_consolidated_pic.png, id=193, 466.74374pt x 91.09032pt>
+File: c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/results_consolidated_pic.png Graphic file (type png)
+<use c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/results_consolidated_pic.png>
+Package pdftex.def Info: c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/results_consolidated_pic.png  used on input line 417.
+(pdftex.def)             Requested size: 281.85587pt x 55.00902pt.
+ [8 <c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-34-00__rnn_3_sequential_sgd_[0.001]_forecast.jpg> <c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-34-35__rnn_7_sequential_sgd_[0.001]_forecast.jpg> <c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-35-30__rnn_50_sequential_sgd_[0.001]_forecast.jpg> <c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-37-51__lstm_3_sequential_sgd_[0.001]_forecast.jpg> <c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-38-24__lstm_7_sequential_sgd_[0.001]_forecast.jpg> <c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-39-23__lstm_50_sequential_sgd_[0.001]_forecast.jpg> <c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-34-15__rnn_3_many_to_one_sgd_[0.001]_forecast.jpg> <c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-34-51__rnn_7_many_to_one_sgd_[0.001]_forecast.jpg> <c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-35-57__rnn_50_many_to_one_sgd_[0.001]_forecast.jpg>] [9 <c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-38-05__lstm_3_many_to_one_sgd_[0.001]_forecast.jpg> <c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-38-39__lstm_7_many_to_one_sgd_[0.001]_forecast.jpg> <c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-39-57__lstm_50_many_to_one_sgd_[0.001]_forecast.jpg> <c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-33-44__rnn_3_sequential_adam_[0.001]_forecast.jpg> <c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-34-18__rnn_7_sequential_adam_[0.001]_forecast.jpg> <c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-34-57__rnn_50_sequential_adam_[0.001]_forecast.jpg> <c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-33-46__rnn_3_many_to_one_adam_[0.001]_forecast.jpg> <c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-34-20__rnn_7_many_to_one_adam_[0.001]_forecast.jpg> <c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-35-00__rnn_50_many_to_one_adam_[0.001]_forecast.jpg> <c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-37-35__lstm_3_sequential_adam_[0.001]_forecast.jpg> <c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-38-08__lstm_7_sequential_adam_[0.001]_forecast.jpg> <c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-38-45__lstm_50_sequential_adam_[0.001]_forecast.jpg>] [10 <c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-37-37__lstm_3_many_to_one_adam_[0.001]_forecast.jpg> <c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-38-10__lstm_7_many_to_one_adam_[0.001]_forecast.jpg> <c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/2024-04-24_17-38-49__lstm_50_many_to_one_adam_[0.001]_forecast.jpg> <c:/Users/Zayan/Documents/code/personal_repos/neural_nets/ECE_8770/project_2/results/results_consolidated_pic.png>]
+Overfull \hbox (0.26984pt too wide) in paragraph at lines 445--445
 []\OT1/cmr/m/n/12 Corentin Tal-lec and Yann Ol-livier. \OT1/cmr/m/it/12 Un-bi-as-ing Trun-cated Back-prop-a-ga-tion Through Time\OT1/cmr/m/n/12 .
  []
 
-[4 <./figs/techniques for truncated bptt.png> <./figs/lstms v1.png>] [5] (report.aux)
+[11
+
+] [12] [13] (report.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
@@ -669,23 +816,23 @@ L3 programming layer <2024-01-04>
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: F1E1FED96E2301F62DD43D8829C1F3E0;1434.
+(rerunfilecheck)             Checksum: FA0646F9CAAFD816A7C253DD7ED1D763;1768.
 Package logreq Info: Writing requests to 'report.run.xml'.
 \openout1 = `report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 18607 strings out of 474486
- 330886 string characters out of 5743756
- 1937542 words of memory out of 5000000
- 40681 multiletter control sequences out of 15000+600000
- 564159 words of font info for 57 fonts, out of 8000000 for 9000
+ 18888 strings out of 474486
+ 360362 string characters out of 5743756
+ 1945542 words of memory out of 5000000
+ 40911 multiletter control sequences out of 15000+600000
+ 565296 words of font info for 61 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,9n,81p,762b,1541s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/Zayan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Zayan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Zayan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/Zayan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Zayan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Zayan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/Zayan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Zayan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/Zayan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/Zayan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/Zayan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on report.pdf (6 pages, 225964 bytes).
+ 75i,13n,81p,762b,1541s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\Zayan\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk><C:/Users/Zayan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Zayan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Zayan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Zayan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/Zayan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/Zayan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Zayan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Zayan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Zayan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/Zayan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/Zayan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Zayan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Zayan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Zayan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/Zayan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/Zayan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/Zayan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/Zayan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on report.pdf (14 pages, 1193439 bytes).
 PDF statistics:
- 159 PDF objects out of 1000 (max. 8388607)
- 28 named destinations out of 1000 (max. 500000)
- 77 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 354 PDF objects out of 1000 (max. 8388607)
+ 75 named destinations out of 1000 (max. 500000)
+ 231 words of extra memory for PDF output out of 10000 (max. 10000000)
 

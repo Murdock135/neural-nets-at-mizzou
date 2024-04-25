@@ -19,7 +19,7 @@ def reset_model_weights(model):
 # --------------------------------------------------------------------------------------------------------------------------------------
 # The base class for trainers
 class BaseTrainer(ABC):
-    def __init__(self, model, device, dataset, criterion, optimizer, epochs, training_portion, batch_size, kfold=False, folds=None):
+    def __init__(self, model, model_type, device, dataset, criterion, optimizer, optimizer_name, learning_rate, epochs, training_portion, batch_size, kfold=False, folds=None):
         self.model = model
         self.device = device
         self.dataset = dataset
@@ -30,6 +30,9 @@ class BaseTrainer(ABC):
         self.batch_size = batch_size
         self.kfold = kfold
         self.folds = folds
+        self.model_type = model_type
+        self.optimizer_type = optimizer_name
+        self.learning_rate = learning_rate
 
         if self.kfold:
             self.kf = KFold(n_splits= self.folds, shuffle=True)
@@ -149,6 +152,7 @@ class BaseTrainer(ABC):
         # get current date and time
         now = datetime.now()
         date_time_str = now.strftime("%Y-%m-%d_%H-%M-%S")
+        config_part = f"{self.rnn_type}_{self.seq_len}_{self.future_strategy}_{self.optimizer_type}_{self.lr}"
 
         if self.kfold:
             # iterate over results of each fold and log results to a csv
@@ -157,7 +161,7 @@ class BaseTrainer(ABC):
                 results_df = pd.DataFrame(fold_results)
                 results_df.to_csv(results_file_name, index=False)
         else:
-            results_file_name = os.path.join(exp_dir, f"results_{date_time_str}.csv")
+            results_file_name = os.path.join(exp_dir, f"results_{date_time_str}_{config_part}.csv")
             results_df = pd.DataFrame(self.results)
             results_df.to_csv(results_file_name, index=False)
 
@@ -385,9 +389,11 @@ class SequentialClassifierTrainer(ClassifierTrainer):
         print(f"Epoch {epoch+1}: Training loss = {train_loss}, Validation loss = {val_loss}, Accuracy = {accuracy}%")
                 
 class SequentialRegressorTrainer(RegressorTrainer):
-    def __init__(self, model, device, dataset, criterion, optimizer, epochs, training_portion, batch_size, kfold=False, folds=None):
-        super().__init__(model, device, dataset, criterion, optimizer, epochs, training_portion, batch_size, kfold, folds)
+    def __init__(self, model, model_type, device, dataset, criterion, optimizer, optimizer_name, learning_rate, epochs, training_portion, batch_size, sequence_length, future_strategy, kfold=False, folds=None):
+        super().__init__(model, model_type, device, dataset, criterion, optimizer, optimizer_name, learning_rate, epochs, training_portion, batch_size, kfold, folds)
         self.forecast = {'predictions':[], 'truths':[], 'datetime indices':[]}
+        self.seq_len = sequence_length
+        self.future_strategy = future_strategy
 
     def train_one_epoch(self, train_loader):
         self.model.train()
@@ -504,8 +510,10 @@ class SequentialRegressorTrainer(RegressorTrainer):
         del self.results['truths']
         del self.results['datetime indices']
 
-        results_file_name = os.path.join(exp_dir, f"results_{date_time_str}.csv")
-        forecast_file_name = os.path.join(exp_dir, f"forecast_{date_time_str}.csv")
+        config_part = f"{self.model_type}_{self.seq_len}_{self.future_strategy}_{self.optimizer_type}_{self.learning_rate}"
+
+        results_file_name = os.path.join(exp_dir, f"results_{date_time_str}_{config_part}.csv")
+        forecast_file_name = os.path.join(exp_dir, f"forecast_{date_time_str}_{config_part}.csv")
 
         results_df = pd.DataFrame(self.results)
         forecast_df = pd.DataFrame(self.forecast)

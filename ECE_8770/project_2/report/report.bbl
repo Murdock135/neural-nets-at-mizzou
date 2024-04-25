@@ -19,6 +19,39 @@
 
 \refsection{0}
   \datalist[entry]{nty/global//global/global}
+    \entry{d2l_bptt}{misc}{}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://d2l.ai/chapter_recurrent-neural-networks/bptt.html}}
+      \field{note}{Accessed: 2024-03-24}
+      \field{title}{Backpropagation Through Time}
+    \endentry
+    \entry{multivariate_chain_rule}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=5171aa5e30f59ce75c38d82fbd3a2b89}{%
+           family={notes},
+           familyi={n\bibinitperiod},
+           given={Paul's},
+           giveni={P\bibinitperiod},
+           prefix={online},
+           prefixi={o\bibinitperiod}}}%
+      }
+      \strng{namehash}{5171aa5e30f59ce75c38d82fbd3a2b89}
+      \strng{fullhash}{5171aa5e30f59ce75c38d82fbd3a2b89}
+      \strng{bibnamehash}{5171aa5e30f59ce75c38d82fbd3a2b89}
+      \strng{authorbibnamehash}{5171aa5e30f59ce75c38d82fbd3a2b89}
+      \strng{authornamehash}{5171aa5e30f59ce75c38d82fbd3a2b89}
+      \strng{authorfullhash}{5171aa5e30f59ce75c38d82fbd3a2b89}
+      \field{sortinit}{n}
+      \field{sortinithash}{22369a73d5f88983a108b63f07f37084}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://tutorial.math.lamar.edu/classes/calciii/chainrule.aspx}}
+      \field{note}{Accessed: 2024-03-24}
+      \field{title}{Chain rule}
+      \field{year}{2018}
+    \endentry
     \entry{tallec2017unbiasing}{misc}{}
       \name{author}{2}{}{%
         {{hash=53e127de75e9241aa5b25e378a90fea1}{%

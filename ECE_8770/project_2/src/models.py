@@ -35,14 +35,14 @@ class FlexibleRNN(nn.Module):
 
     def forward(self, x):
         # Initial hidden state
-        h0 = torch.zeros(self.num_layers, x.size(0), self.hidden_size).to(x.device)
-        c0 = torch.zeros(self.num_layers, x.size(0), self.hidden_size).to(x.device) if self.rnn_type == 'lstm' else None
+        hn = torch.zeros(self.num_layers, x.size(0), self.hidden_size).to(x.device)
+        cn = torch.zeros(self.num_layers, x.size(0), self.hidden_size).to(x.device) if self.rnn_type == 'lstm' else None
 
         # Forward pass
         if isinstance(self.rnn, nn.LSTM):
-            out, (hn, cn) = self.rnn(x, (h0, c0))
+            out, (hn, cn) = self.rnn(x, (hn, cn))
         else:
-            out, hn = self.rnn(x, h0)
+            out, hn = self.rnn(x, hn)
 
         # Apply the fully connected layer
         out = self.fc(out)

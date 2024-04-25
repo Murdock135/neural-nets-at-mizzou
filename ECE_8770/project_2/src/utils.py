@@ -15,15 +15,15 @@ def load_config(path_to_config) -> dict:
         config: dict = tomllib.load(f)
         return config
     
-def get_model(config, no_features, output_size):
+def get_model(config, no_features, output_size, rnn_type=None, future_strategy=None):
     model = FlexibleRNN(
         input_size=no_features,
         hidden_size=config["model"]["hidden_size"],
         output_size=output_size,
         num_layers=config["model"]["num_layers"],
-        rnn_type=config["model"]["type"],
+        rnn_type=rnn_type if rnn_type is not None else config["model"]["type"],
         prediction_window=config["model"]["prediction_window"],
-        future_strategy=config["model"]["future_strategy"]
+        future_strategy=future_strategy if future_strategy is not None else config["model"]["future_strategy"]
     )
 
     return model
@@ -49,7 +49,7 @@ def get_criterion(config: str):
 
 
 class ResultsPlotter:
-    def __init__(self, exp_dir, results, fold_idx=None, config=None, forecast_results = None):
+    def __init__(self, exp_dir, results, fold_idx=None, config=None, forecast_results = None, model_type=None, sequence_len=None, future_strategy=None, user_optimizer=None, learning_rate=None):
         '''Args:
             exp_dir(string)- directory to export visualizations to
             results(dictionary)- a dict of results where keys are metrics and values are lists
@@ -65,13 +65,13 @@ class ResultsPlotter:
         if config is not None:
             self.config = config
 
-            self.optimizer_type = config['training']['optimizer']['type']
-            self.lr = config['training']['optimizer']['learning_rate']
+            self.optimizer_type = user_optimizer if user_optimizer is not None else config['training']['optimizer']['type']
+            self.lr = learning_rate if learning_rate is not None else config['training']['optimizer']['learning_rate']
             self.batch_size = config['training']['batch_size']
             self.criterion = config['training']['criterion']
-            self.rnn_type = config['model']['type']
-            self.seq_len = config['model']['sequence_length']
-            self.future_strategy = config['model']['future_strategy']
+            self.rnn_type = model_type if model_type is not None else config['model']['type']
+            self.seq_len = sequence_len if sequence_len is not None else config['model']['sequence_length']
+            self.future_strategy = future_strategy if future_strategy is not None else config['model']['future_strategy']
 
     def plot_classification_results(self):
 
@@ -136,7 +136,8 @@ class ResultsPlotter:
             now = datetime.now()
             timestamp = now.strftime("%Y-%m-%d_%H-%M-%S")
             fold_part = f"fold_{self.fold_idx}_" if self.fold_idx is not None else ""
-            plt.savefig(os.path.join(self.exp_dir, f"{timestamp}_{fold_part}_regression_loss"))
+            config_part = f"{self.rnn_type}_{self.seq_len}_{self.future_strategy}_{self.optimizer_type}_{self.lr}"
+            plt.savefig(os.path.join(self.exp_dir, f"{timestamp}_{fold_part}_{config_part}_regression_loss.jpg"))
 
     def plot_forecast(self):
         # convert forecast results to dataframe
@@ -170,7 +171,8 @@ class ResultsPlotter:
         now = datetime.now()
         timestamp = now.strftime("%Y-%m-%d_%H-%M-%S")
         fold_part = f"fold_{self.fold_idx}_" if self.fold_idx is not None else ""
-        plt.savefig(os.path.join(self.exp_dir, f"{timestamp}_{fold_part}_forecast"))
+        config_part = f"{self.rnn_type}_{self.seq_len}_{self.future_strategy}_{self.optimizer_type}_{self.lr}"
+        plt.savefig(os.path.join(self.exp_dir, f"{timestamp}_{fold_part}_{config_part}_forecast.jpg"))
         
     def plot_from_csv(self):
          pass
